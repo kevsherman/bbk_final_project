@@ -1,0 +1,2 @@
+class SubEventsController < ApplicationController
+end
