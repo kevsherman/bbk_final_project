@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  get 'main/event'
+
+  resources :users, :guests
+  
+  resources :main_events do
+    resources :sub_events
+  end
+
+  resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
