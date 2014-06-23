@@ -1,2 +1,0 @@
-class SubEventController < ApplicationController
-end
