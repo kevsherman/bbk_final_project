@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        @main_event = MainEvent.find(@user.id)
+        redirect_to main_event_path(@main_event)
       else
         render :new
       end
