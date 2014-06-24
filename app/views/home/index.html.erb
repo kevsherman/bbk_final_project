@@ -8,26 +8,24 @@
       <ul class="right button-group">
       <li><a href="#" class="button">About Us</a></li>
       <li><a href="#" class="button">Sign Up</a></li>
-      <li><a href="#" class="button">Login</a></li>
+      <li><a href="#" class="button" data-dropdown="drop">Login</a></li>
+        <ul id="drop" class="[tiny small medium large content]f-dropdown" data-dropdown-content>
+          <%= form_tag sessions_path do %>
+          <div>
+            <%= label_tag "email" %><br/>
+            <%= text_field_tag "email" %>
+          </div>
+          <div>
+            <%= label_tag :password %><br/>
+            <%= password_field_tag :password %>
+          </div>
+          <div><%= submit_tag "Log In" %></div>
+        <% end %>
+        </ul>
       </ul>
      </div>
    </div>
   
- 
- 
- 
- 
-  <!-- <div class="row">
-    <div class="large-12 columns">
-      <div id="carousel-slider">
-        <li><img src="http://placehold.it/1000x400&text=[ img 1 ]"/></li>
-        <li><img src="http://placehold.it/1000x400&text=[ img 2 ]"/></li>
-        <li><img src="http://placehold.it/1000x400&text=[ img 3 ]"/></li>
-      </div>
-    
-    <hr/>
-    </div>
-  </div> -->
 <div class="row">
     <div class="large-12 columns">
  <div class="slider single-item">
@@ -37,29 +35,6 @@
         </div>
   </div>
   </div>
- 
- <!-- 
-  <div class="row">
-    <div class="large-4 columns">
-      <img src="http://placehold.it/400x300&text=[img]"/>
-      <h4>This is a content section.</h4>
-      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-    </div>
-    
-    <div class="large-4 columns">
-      <img src="http://placehold.it/400x300&text=[img]"/>
-      <h4>This is a content section.</h4>
-      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-    </div>
-    
-    <div class="large-4 columns">
-      <img src="http://placehold.it/400x300&text=[img]"/>
-      <h4>This is a content section.</h4>
-      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-    </div>
-  
-    </div>
-     -->
  
 <div class="row">
     <div class="large-12 columns">
@@ -80,8 +55,6 @@
     </div>
   </div>
  
-   
-  
   <footer class="row">
     <div class="large-12 columns">
       <hr/>
