@@ -4,6 +4,7 @@ class SubEventsController < ApplicationController
     @sub_event = SubEvent.new(sub_event_params)
 
     if @sub_event.save
+      @main_event = MainEvent.find(session[:user_id])
       redirect_to main_event_path(@main_event)
     else
       render :new
