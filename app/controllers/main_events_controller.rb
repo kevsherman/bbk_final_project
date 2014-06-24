@@ -14,6 +14,7 @@ class MainEventsController < ApplicationController
 
   def create
     @main_event = MainEvent.new(main_event_params)
+    @main_event.user_id = session[:user_id]
 
     if @main_event.save
       redirect_to main_event_path(@main_event)
