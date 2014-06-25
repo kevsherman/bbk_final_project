@@ -1,0 +1,5 @@
+<% @guests.each do |guest| %>
+  <h4> <%= link_to guest.last, guest_path(guest) %>,  <%= guest.first %> </h4>
+  <p><%= guest.email %>  </p>  
+  <hr>
+<% end %>

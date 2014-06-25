@@ -1,0 +1,15 @@
+ <%= form_for @guest do |f| %>
+  <div>
+    <%= f.label "Email" %><br>
+    <%= f.text_field "email" %>
+  </div>
+  <div>
+    <%= f.label "First Name" %><br>
+    <%= f.text_field "first" %>
+  </div>
+  <div>
+    <%= f.label "Last Name" %><br>
+    <%= f.text_field "last" %>
+  </div>
+  <div><%= f.submit "Submit" %></div>
+<% end %>
