@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140621013150) do
     t.string   "email"
     t.string   "first"
     t.string   "last"
-    t.boolean  "rsvp"
+    t.boolean  "rsvp",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
