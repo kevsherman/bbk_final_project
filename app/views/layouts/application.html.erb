@@ -12,6 +12,8 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
 
+<!-- NAVIGATION BAR -->
+
     <% if current_user %>
 
       <nav class="top-bar">
@@ -23,10 +25,11 @@
       <section class="top-bar-section">
         <ul class="right">
           <li class="divider"></li>
-            <a href="#" class="button" data-dropdown="drop">Link Dropdown &raquo;</a>
+
+            <a href="#"> <i class="fi-list"> <data-dropdown="drop"></a>
               <ul id="drop" class="[tiny small medium large content]f-dropdown" data-dropdown-content>
-                <li><a href="#">edit profile</a></li>
-                <li><a href="#">logout</a></li>
+                <li><a href="#">Edit Profile</a></li>
+                <li><%= link_to "Logout", session_path("current"), method: :delete %></li>
               </ul>
         </ul>
         </div>
@@ -34,9 +37,7 @@
 
     <% end %>
 
-
-
-
+<!-- NAVIGATION BAR -->    
 
   </head>
 
