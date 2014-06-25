@@ -11,7 +11,6 @@ FactoryGirl.define do
     start_time 
   end
 
-  
   factory :sub_event do 
     main_event_id 1
     title "SubEvent Test"
