@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   has_many :main_events
   has_secure_password
   validates :email, presence: true, uniqueness: true
+  validates_presence_of :password, :password_confirmation
   validates :email, format: {with: VALID_EMAIL_REGEX }
 end
