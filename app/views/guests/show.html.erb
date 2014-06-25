@@ -1,0 +1,3 @@
+<h1> <%=@guest.first%> <%=@guest.last%></h1>
+<%= link_to "edit", edit_guest_path(@guest)%>
+<%= link_to "delete", guest_path(@guest), method: :delete, confirm: "Are you Sure?" %>

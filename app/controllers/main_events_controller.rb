@@ -25,6 +25,11 @@ class MainEventsController < ApplicationController
 
   def update
     @main_event = MainEvent.find(params[:id])
+    if @main_event.update_attributes(main_event_params)
+      redirect_to main_event_path(@main_event)
+    else
+      render :edit
+    end
   end
 
   def destroy
