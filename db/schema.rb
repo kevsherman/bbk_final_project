@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20140621013150) do
     t.string   "email"
     t.string   "first"
     t.string   "last"
-    t.boolean  "rsvp"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,12 +33,12 @@ ActiveRecord::Schema.define(version: 20140621013150) do
   create_table "main_events", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.string   "date"
+    t.date     "date"
     t.string   "image"
     t.string   "link"
     t.string   "description"
-    t.integer  "start_time"
-    t.integer  "end_time"
+    t.time     "start_time"
+    t.time     "end_time"
     t.string   "bride_full_name"
     t.string   "groom_full_name"
     t.datetime "created_at"

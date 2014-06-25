@@ -17,6 +17,7 @@ class MainEventsController < ApplicationController
     @main_event.user_id = session[:user_id]
 
     if @main_event.save
+      # binding.pry
       redirect_to main_event_path(@main_event.id)
     else
       render :new
@@ -41,7 +42,7 @@ class MainEventsController < ApplicationController
 
   def main_event_params
     params.require(:main_event).permit(
-      :title, :image, :link, :description, :start_time, :end_time, :bride_full_name, :groom_full_name
+      :title, :image, :link, :description, :start_time, :end_time, :bride_full_name, :groom_full_name, :date
       )
   end
 end

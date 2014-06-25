@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require modernizr
+//= require fastclick
+//= require placeholder
 //= require foundation/foundation
+//= require foundation/foundation.reveal
 //= require foundation/foundation-datepicker
 //= require foundation/foundation.abide
 //= require foundation/foundation.accordion
@@ -27,12 +30,10 @@
 //= require foundation/foundation.magellan
 //= require foundation/foundation.offcanvas
 //= require foundation/foundation.orbit
-//= require foundation/foundation.reveal
 //= require foundation/foundation.slider
 //= require foundation/foundation.tab
 //= require foundation/foundation.tooltip
 //= require foundation/foundation.topbar
-//= require placeholder
 //= require main_event
 
 
