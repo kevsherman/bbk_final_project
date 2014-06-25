@@ -3,16 +3,16 @@ require 'spec_helper'
 describe User do 
 
   it "should have valid factory" do
-    expect(FactoryGirl.build(:user)).to be_valid
+    expect(build(:user)).to be_valid
   end
 
   it "should have an email, password and password confirmation" do 
-    user = FactoryGirl.build(:user)
+    user = build(:user)
     expect(user).to be_valid
   end
 
   it "should not accept an empty name field" do
-    user = FactoryGirl.build(:user)
+    user = build(:user)
     user.email = " "
     expect(user).not_to be_valid
   end
@@ -27,5 +27,11 @@ describe User do
     user = build(:user)
     user.email = "nopenopenope"
     expect(user).not_to be_valid
+  end
+end
+
+describe MainEvent do
+  it "should have a valid factory" do
+    
   end
 end
