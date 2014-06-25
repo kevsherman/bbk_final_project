@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20140621013150) do
   create_table "assignments", force: true do |t|
     t.integer  "guest_id"
     t.integer  "sub_event_id"
+    t.boolean  "rsvp"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140621013150) do
     t.string   "email"
     t.string   "first"
     t.string   "last"
-    t.boolean  "rsvp",          default: false
+    t.boolean  "rsvp"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

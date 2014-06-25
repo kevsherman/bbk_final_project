@@ -5,7 +5,6 @@ class CreateGuests < ActiveRecord::Migration
       t.string :email
       t.string :first
       t.string :last
-      t.boolean :rsvp
       t.timestamps
     end
   end

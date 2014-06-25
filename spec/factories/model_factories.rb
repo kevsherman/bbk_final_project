@@ -18,6 +18,5 @@ FactoryGirl.define do
   factory :assignment do
     guest_id 1
     sub_event_id 3
-    rsvp nil
   end
 end
