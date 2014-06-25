@@ -11,6 +11,31 @@
 
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
+
+    <% if current_user %>
+
+      <nav class="top-bar">
+        <ul class="title-area">
+          <li class="name">
+            <h1></h1>
+          </li>
+        </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="divider"></li>
+          <li></li>
+          <li class="divider"></li>
+          <li></li>
+          <li class="divider"></li>
+          <li></li>
+          <li class="divider"></li>
+          <li></li>
+        </ul>
+        </div>
+      </nav>
+
+    <% end %>
+
   </head>
 
   <body>
