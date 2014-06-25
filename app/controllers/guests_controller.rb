@@ -8,8 +8,7 @@ class GuestsController < ApplicationController
     @guest = Guest.new(guest_params)
 
     if @guest.save
-      redirect_to main_event_path(@main_event)
-    #TODO: Where to redirect to?
+      redirect_to guests_path
     else
       render :new
     end
@@ -20,7 +19,7 @@ class GuestsController < ApplicationController
   end
 
   def show
-    @guest = Guest.find(params[:main_event_id])
+    @guest = Guest.find(params[:id])
   end
 
   def edit
@@ -33,14 +32,16 @@ class GuestsController < ApplicationController
 
   def destroy
     @guest = Guest.find(params[:id])
+    @guest.destroy
+    redirect_to guests_path
   end
 
   protected
 
   def guest_params
     params.require(:guest).permit(
-      :title, :location, :description, :start_time, :end_time, :attire
-      )
+      :email, :first, :last
+    )
   end
 
 end

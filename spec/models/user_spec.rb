@@ -6,11 +6,6 @@ describe User do
     expect(build(:user)).to be_valid
   end
 
-  it "should have an email, password and password confirmation" do 
-    user = build(:user)
-    expect(user).to be_valid
-  end
-
   it "should not accept an empty name field" do
     user = build(:user)
     user.email = " "
@@ -28,10 +23,10 @@ describe User do
     user.email = "nopenopenope"
     expect(user).not_to be_valid
   end
-end
 
-describe MainEvent do
-  it "should have a valid factory" do
-    
+  it "should not accept an empty password field" do
+    user = build(:user)
+    user.password = nil
+    expect(user).not_to be_valid
   end
 end
