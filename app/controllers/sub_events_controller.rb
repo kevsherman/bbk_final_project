@@ -18,7 +18,7 @@ class SubEventsController < ApplicationController
 
   def show
     @main_event = MainEvent.find(session[:user_id])
-    @sub_event = SubEvent.find(params[:main_event_id])
+    @sub_event = SubEvent.find(params[:id])
   end
 
   def edit
