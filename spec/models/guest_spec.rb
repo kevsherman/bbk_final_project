@@ -28,4 +28,5 @@ describe Guest do
     guest.main_event_id = 9000
     expect(guest).not_to be_valid
   end
+  
 end
