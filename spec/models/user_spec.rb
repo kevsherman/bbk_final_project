@@ -29,9 +29,3 @@ describe User do
     expect(user).not_to be_valid
   end
 end
-
-describe MainEvent do
-  it "should have a valid factory" do
-    
-  end
-end
