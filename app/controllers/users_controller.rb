@@ -19,6 +19,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    if @user.update_attributes(user_params)
+      redirect_to new_main_event_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def user_params
