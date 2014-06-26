@@ -17,7 +17,6 @@ class MainEventsController < ApplicationController
     @main_event.user_id = session[:user_id]
 
     if @main_event.save
-      # binding.pry
       redirect_to main_event_path(@main_event.id)
     else
       render :new
