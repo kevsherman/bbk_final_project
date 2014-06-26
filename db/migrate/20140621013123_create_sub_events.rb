@@ -5,8 +5,9 @@ class CreateSubEvents < ActiveRecord::Migration
       t.string   :title
       t.string   :location
       t.string   :description
-      t.string   :start_time
-      t.string   :end_time
+      t.date     :date
+      t.time     :start_time
+      t.time     :end_time
       t.string   :attire
       t.timestamps
     end
