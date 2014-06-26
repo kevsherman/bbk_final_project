@@ -3,6 +3,7 @@ class MainEvent < ActiveRecord::Base
   has_many :sub_events
   has_many :guests
 
-  validates_presence_of :user_id, :title, :start_time, :end_time, :groom_full_name, :bride_full_name
+  validates_presence_of :user_id, :title, :date, :start_time, :end_time, :groom_full_name, :bride_full_name
   validates_numericality_of :user_id, {only_integer: true}
+  validates_uniqueness_of :user_id
 end
