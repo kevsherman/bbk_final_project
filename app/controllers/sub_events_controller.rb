@@ -5,7 +5,7 @@ class SubEventsController < ApplicationController
     @sub_event.main_event_id = params[:main_event_id]
     
     if @sub_event.save 
-      @main_event = MainEvent.where(user_id: session[:user_id]).first
+      @main_event = MainEvent.where(user_id: session[:user_id])
       redirect_to main_event_path(params[:main_event_id])
     else
       render :new
@@ -23,15 +23,17 @@ class SubEventsController < ApplicationController
   end
 
   def edit
-    @main_event = MainEvent.find(session[:user_id])
+      @main_event = MainEvent.where(user_id: session[:user_id])
     @sub_event = SubEvent.find(params[:id])
   end
 
   def update
+    @main_event = MainEvent.where(user_id: session[:user_id])
     @sub_event = SubEvent.find(params[:id])
   end
 
   def destroy
+    @main_event = MainEvent.where(user_id: session[:user_id])
     @sub_event = SubEvent.find(params[:id])
   end
 
