@@ -27,7 +27,7 @@
 
             <a href="#" i class="fi-list" data-dropdown="drop"></a>
               <ul id="drop" class="[tiny small medium large content]f-dropdown" data-dropdown-content>
-                <li><a href="#">Edit Profile</a></li>
+                <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
                 <li><%= link_to "Logout", session_path("current"), method: :delete %></li>
               </ul>
         </ul>
