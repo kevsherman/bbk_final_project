@@ -19,4 +19,11 @@ describe MainEvent do
   expect(main_event).not_to be_valid
   end
 
+  it "should only accept unique user_id's" do
+  main_event1 = create(:main_event)
+  main_event2 = build(:main_event)
+  expect(main_event2).not_to be_valid
+  end
+
+  
 end
