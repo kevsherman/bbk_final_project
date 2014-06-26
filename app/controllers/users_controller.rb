@@ -25,9 +25,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @main_event = MainEvent.where(user_id: session[:user_id])
     if @user.update_attributes(user_params)
-      redirect_to main_event_path(@main_event)
+      redirect_to main_event_path
     else
       render :edit
     end
