@@ -2,6 +2,7 @@ class MainEventsController < ApplicationController
     
   def show
     @main_event = MainEvent.find(params[:id])
+    @sub_events = SubEvent.where(main_event_id: params[:id])
   end
   
   def new 
