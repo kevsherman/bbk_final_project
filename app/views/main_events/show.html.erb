@@ -2,3 +2,9 @@
 <h1> <%= @main_event.title   %>! </h1>
 
 <p><%= link_to "Create a SubEvent!", new_main_event_sub_event_path(@main_event) %></p>
+
+<div>
+  <% @sub_events.each do |sub_event| %>
+    <h2><%= link_to sub_event.title, main_event_sub_event_path(@main_event, sub_event) %></h2>
+  <% end %>
+<div>
