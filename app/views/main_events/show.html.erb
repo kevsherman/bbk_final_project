@@ -1,10 +1,28 @@
+<style>
+.columns{
+  border:1px solid black;
+}
+</style>
 
-<h1> <%= @main_event.title   %>! </h1>
+<div class="row">
+  <div class="large-2 columns"> space </div>
+  <div class="large-10 columns">
+    <h1> <%= @main_event.title   %>! </h1> 
+    <p><%= link_to "Create a SubEvent!", new_main_event_sub_event_path(@main_event) %></p>
+  </div>
+</div>
 
-<p><%= link_to "Create a SubEvent!", new_main_event_sub_event_path(@main_event) %></p>
-
-<div>
+  
   <% @sub_events.each do |sub_event| %>
-    <h2><%= link_to sub_event.title, main_event_sub_event_path(@main_event, sub_event) %></h2>
+    <div class="row">
+      
+      <div class="large-2 columns">
+        <h5><%= sub_event.date.to_s(:long) %></h5>
+        <h5><%= sub_event.start_time.to_s(:time) %> </h5>
+      </div>
+      <div class="large-10 columns">  
+        <h2><%= link_to sub_event.title, main_event_sub_event_path(@main_event, sub_event) %></h2>
+      </div>
+    </div>
   <% end %>
-<div>
+
