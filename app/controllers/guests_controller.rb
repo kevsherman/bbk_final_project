@@ -1,5 +1,7 @@
 class GuestsController < ApplicationController
   before_filter :restrict_access?
+    
+  def index
     @main_event = MainEvent.where(user_id: session[:user_id]).first
     @guests = Guest.all
   end
