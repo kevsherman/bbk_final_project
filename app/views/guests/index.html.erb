@@ -1,5 +1,20 @@
-<%  @guests.each do |guest| %>
-  <h4> <%= link_to guest.last, main_event_guests_path(guest) %>,  <%= guest.first %> </h4>
-  <p><%= guest.email %>  </p>  
-  <hr>
-<% end %>
+<div class="row">
+  
+  <div class="large-10 columns">
+    <h1> <%= @main_event.title   %> -Guest List! </h1> 
+  </div>
+  <div class="large-2 columns"><%= button_to "Add a New Guest", new_main_event_guest_path(@main_event), :method => "get" %></div>
+</div>
+
+<div class="row">
+  <div class="large-9 columns">
+    <%  @guests.each do |guest| %>
+      <div class="row">
+        <div class="large-6 columns">
+          <h4> <%= link_to guest.last, main_event_guest_path(@main_event, guest)%>,  <%= guest.first %> </h4>  
+          <hr>
+        </div>
+      </div>    
+    <% end %>
+  </div>
+</div>    
