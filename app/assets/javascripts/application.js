@@ -34,6 +34,6 @@
 //= require foundation/foundation.tooltip
 //= require foundation/foundation.topbar
 //= require main_event
-
+//= require sub_event
 
 
