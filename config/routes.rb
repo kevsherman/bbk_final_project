@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :users
   
   resources :main_events  do
-    resources :sub_events
+    resources :sub_events do
+      resources :assignments  
+    end
     resources :guests
   end
 

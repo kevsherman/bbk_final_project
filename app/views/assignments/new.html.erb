@@ -1,0 +1,8 @@
+<h1>Guests for <%= @sub_event.title %></h1>
+
+
+Add Guest (modal)
+<%= form_for [@main_event, @sub_event, @assignment] do |f| %>
+  <%= collection_select(:assignment, :guest_id, @guests, :id, :first) %>
+<% end %>
+
