@@ -1,13 +1,14 @@
 class GuestsController < ApplicationController
   
   def index
+    @main_event = MainEvent.where(user_id: session[:user_id]).first
     @guests = Guest.all
   end
 
   def create
     @guest= Guest.new(guest_params)
     @guest.main_event_id = params[:main_event_id]
-
+    
     if @guest.save
       @main_event = MainEvent.where(user_id: session[:user_id]).first
       redirect_to main_event_guests_path
@@ -17,22 +18,23 @@ class GuestsController < ApplicationController
   end
 
   def new
-    @guest = Guest.new
     @main_event = MainEvent.where(user_id: session[:user_id]).first
+    @guest = Guest.new
+    
   end
 
   def show
-    @main_event = MainEvent.where(user_id: session[:user_id])
+    @main_event = MainEvent.where(user_id: session[:user_id]).first 
     @guest = Guest.find(params[:id])
   end
 
   def edit
-    @main_event = MainEvent.where(user_id: session[:user_id])
+    @main_event = MainEvent.where(user_id: session[:user_id]).first
     @guest = Guest.find(params[:id])
   end
 
   def update
-    @main_event = MainEvent.where(user_id: session[:user_id])
+    @main_event = MainEvent.where(user_id: session[:user_id]).first
     @guest = Guest.find(params[:id])
   end
 
