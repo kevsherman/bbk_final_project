@@ -1,8 +1,4 @@
-<style>
-.columns{
-  border:1px solid black;
-}
-</style>
+
 
 <div class="row">
   <div class="large-2 columns"> space </div>
@@ -13,16 +9,16 @@
 </div>
 
   
+<div class="row">
   <% @sub_events.each do |sub_event| %>
-    <div class="row">
-      
       <div class="large-2 columns">
         <h5><%= sub_event.date.to_s(:long) %></h5>
         <h5><%= sub_event.start_time.to_s(:time) %> </h5>
       </div>
-      <div class="large-10 columns">  
+      <div class="large-8 columns">  
         <h2><%= link_to sub_event.title, main_event_sub_event_path(@main_event, sub_event) %></h2>
       </div>
-    </div>
   <% end %>
+  <div class="large-2 columns"></div>
+</div>
 

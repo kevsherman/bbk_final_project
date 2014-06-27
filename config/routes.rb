@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :users
   
-  resources :main_events, shallow: true  do
+  resources :main_events  do
     resources :sub_events
     resources :guests
   end
