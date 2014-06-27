@@ -1,5 +1,4 @@
 #create users
-require 'pry'
 @password = "password"
 
 barrett = User.create(
@@ -75,8 +74,8 @@ MainEvent.all.each do |mainevent|
     guest = Guest.create(
       main_event_id: mainevent.id,
       email: (rand(1000) + 100).to_s + Faker::Internet.email,
-      first: Faker::Name.name,
-      last: Faker::Name.name
+      first: Faker::Name.first_name,
+      last: Faker::Name.last_name
     )
     puts "created guest" if guest.valid?
   end
