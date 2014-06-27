@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require modernizr
 //= require fastclick
 //= require placeholder
 //= require foundation/foundation

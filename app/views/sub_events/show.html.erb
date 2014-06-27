@@ -1,1 +1,31 @@
-<h1> <%= @sub_event.title %></h1
+<div class="row">
+  
+  <div class="large-10 columns">
+    <h1><%= @sub_event.title %></h1>
+    <h4><%= @sub_event.description %></h4>
+    <h4><%= @sub_event.date.to_s(:long) %></h4>
+    <h4>From <%= @sub_event.start_time.to_s(:time) %> to <%= @sub_event.end_time.to_s(:time) %></h4>
+  </div>
+  <div class="large-2 columns"><%= button_to "Edit Event (fix this)", edit_main_event_sub_event_path(@main_event, @sub_event), :method => "get" %>
+  </div>
+</div>
+
+<div class="row">
+  <h3><strong>Guests for this Event</strong></h3>
+
+    <a href="#" data-reveal-id="myModal">Register Guests</a>
+
+      <div id="myModal" class="reveal-modal" data-reveal>
+        <h2>show modal</h2>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+
+  <% @sub_event.guests.each do |guest| %>
+
+     <h5><%= guest.first %> <%= guest.last %> </h5>
+     <h6><%= guest.email %> </h6>
+     <hr/>
+   
+  <%end%>
+
+</div>  
