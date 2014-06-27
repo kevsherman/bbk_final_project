@@ -1,3 +1,17 @@
-<h1> <%=@guest.first%> <%=@guest.last%></h1>
-<%= link_to "edit", edit_guest_path(@guest)%>
-<%= link_to "delete", guest_path(@guest), method: :delete, confirm: "Are you Sure?" %>
+<div class="row">
+  <div class="large-1 columns"><%= button_to "Edit This Guest", edit_main_event_guest_path, :method => "get" %></div>
+  <div class="large-10 columns"><%= button_to "Delete This Guest", main_event_guest_path, :method => :delete, confirm: "Are You Sure? " %>
+  </div>
+</div>
+
+<div class="row">
+  <div> <h1> Guest Info</h1>
+  <h1> <%=@guest.first%> <%=@guest.last%></h1>
+  <h5> <%=@guest.email%></h5>
+</div>
+
+
+
+
+<div class="large-10 columns"><%= button_to "Add A SubEvent (doesn't work)", new_main_event_sub_event_path(@main_event, @sub_event)  %>
+</div>
