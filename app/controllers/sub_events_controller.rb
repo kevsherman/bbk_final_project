@@ -21,10 +21,12 @@ class SubEventsController < ApplicationController
   def show
     @main_event = MainEvent.where(user_id: session[:user_id])
     @sub_event = SubEvent.find(params[:id])
+    @guests = Guest.where(main_event_id: params[:main_event_id])
+    @assignment = Assignment.new
   end
 
   def edit
-      @main_event = MainEvent.where(user_id: session[:user_id])
+    @main_event = MainEvent.where(user_id: session[:user_id])
     @sub_event = SubEvent.find(params[:id])
   end
 
