@@ -1,5 +1,6 @@
 class GuestsController < ApplicationController
-  
+  before_filter :restrict_access?
+    
   def index
     @main_event = MainEvent.where(user_id: session[:user_id]).first
     @guests = Guest.all
@@ -39,10 +40,9 @@ class GuestsController < ApplicationController
   end
 
   def destroy
-    @main_event = MainEvent.where(user_id: session[:user_id]).first
     @guest = Guest.find(params[:id])
     @guest.destroy
-    redirect_to guests_path
+    redirect_to main_event_guests_path
   end
 
   protected
