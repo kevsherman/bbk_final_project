@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-  before_filter :restrict_sub_access?
   def new
 
   end
