@@ -1,3 +1,9 @@
+<style>
+  .columns{
+    border:1px solid black;
+  }
+</style>
+
 <div class="row">
   <div class="large-10 columns">
     <h1><%= @sub_event.title %></h1>
@@ -35,11 +41,17 @@
    
     <div id="guestModal<%=index%>" class="reveal-modal" data-reveal>
      <div class="row">
-      <div class="class-4 columns">
+      <div class="large-4 columns">
        <%= guest.first %> <%= guest.last %> 
       </div>
+      <div class="large-4 columns">
        <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event, guest), :method => "delete" %>
+      </div>
+      <div class="large-4 columns">
+        <%= button_to "Full Guest Details", main_event_guest_path(@main_event.first , guest), :method => "get" %>
        <a class="close-reveal-modal">x</a>
+      </div>
+
      </div>
     </div>  
 

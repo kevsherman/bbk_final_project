@@ -13,5 +13,11 @@
 
 
 
-<div class="large-10 columns"><%= button_to "Add A SubEvent (doesn't work)", new_main_event_sub_event_path(@main_event, @sub_event)  %>
+<div class="row">
+  <% @sub_events.each_with_index do |subEvent, index| %>
+    <a href="#" data-reveal-id="subEventModal<%=index%>"><h5><%=subEvent.title %></h5></a>
+    <div id="subEventModal<%=index%>" class="reveal-modal" data-reveal>
+      <div><%= subEvent.title %></div>
+      <div><%= button_to "Add SubEvent" %></div>
+  <% end %>
 </div>

@@ -18,7 +18,7 @@ class AssignmentsController < ApplicationController
   end
 
   def destroy
-    @assignment = Assignment.where(guest_id: params[:id]).first
+    @assignment = Assignment.where(guest_id: params[:id]).first 
     Assignment.destroy(@assignment.id)
     redirect_to :back
   end

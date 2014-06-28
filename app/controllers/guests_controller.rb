@@ -26,6 +26,7 @@ class GuestsController < ApplicationController
 
   def show
     @main_event = MainEvent.where(user_id: session[:user_id]).first 
+    @sub_events = SubEvent.where(main_event_id: @main_event)
     @guest = Guest.find(params[:id])
   end
 
@@ -37,6 +38,7 @@ class GuestsController < ApplicationController
   def update
     @main_event = MainEvent.where(user_id: session[:user_id]).first
     @guest = Guest.find(params[:id])
+    redirect_to main_event_guest_path
   end
 
   def destroy
