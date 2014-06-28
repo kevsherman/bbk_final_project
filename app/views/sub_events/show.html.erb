@@ -1,9 +1,3 @@
-<style>
-  .columns{
-    border:1px solid black;
-  }
-</style>
-
 <div class="row">
   <div class="large-10 columns">
     <h1><%= @sub_event.title %></h1>
@@ -40,8 +34,13 @@
     <a href="#" data-reveal-id="guestModal<%=index%>"> <h5><strong><%= guest.first %> <%= guest.last %></strong> - <%= guest.email %><%= guest.assignment.where(sub_event_id: @sub_event).first.rsvp %></h5></a>
    
     <div id="guestModal<%=index%>" class="reveal-modal" data-reveal>
-     <%= guest.first %> <%= guest.last %> <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event, guest), :method => "delete" %>
-    <a class="close-reveal-modal">x</a>
+     <div class="row">
+      <div class="class-4 columns">
+       <%= guest.first %> <%= guest.last %> 
+      </div>
+       <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event, guest), :method => "delete" %>
+       <a class="close-reveal-modal">x</a>
+     </div>
     </div>  
 
      <hr/>   
