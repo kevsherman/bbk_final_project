@@ -1,5 +1,7 @@
 class MainEventsController < ApplicationController
-    
+
+  before_filter :restrict_main_access?, :except => [:create, :new, :update]
+
   def show
     @main_event = MainEvent.find(params[:id])
     @sub_events = SubEvent.where(main_event_id: params[:id]).order(:date).order(:start_time)

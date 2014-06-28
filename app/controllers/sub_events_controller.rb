@@ -1,5 +1,6 @@
 class SubEventsController < ApplicationController
-  
+  before_filter :restrict_access?
+
   def create
     @sub_event = SubEvent.new(sub_event_params)
     @sub_event.main_event_id = params[:main_event_id]
