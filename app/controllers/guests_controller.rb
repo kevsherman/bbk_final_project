@@ -38,7 +38,11 @@ class GuestsController < ApplicationController
   def update
     @main_event = MainEvent.where(user_id: session[:user_id]).first
     @guest = Guest.find(params[:id])
-    redirect_to main_event_guest_path
+    if @guest.update_attributes(guest_params)
+      redirect_to main_event_guest_path
+    else
+      render :edit
+    end
   end
 
   def destroy
