@@ -2,28 +2,32 @@
 
 <!-- NAVIGATION BAR -->
 
-    <% if current_user %>
+  <% if current_user %>
 
-      <nav class="top-bar">
-        <ul class="title-area">
-          <li class="name">
-            <h1>Logo goes here</h1>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "LOGO HERE", root_path %></a></h1>
+        </li>
+     
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href="#">Hello, <%= current_user.firstname %></a>
+            <ul class="dropdown">
+              <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+              <li><%= link_to "Logout", session_path("current"), method: :delete %></li>
+            </ul>
           </li>
         </ul>
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class="divider"></li>
+      </section>
+    </nav>
 
-            <a href="#" i class="fi-list" data-dropdown="drop"></a>
-              <ul id="drop" class="[tiny small medium large content]f-dropdown" data-dropdown-content>
-                <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
-                <li><%= link_to "Logout", session_path("current"), method: :delete %></li>
-              </ul>
-        </ul>
-        </div>
-      </nav>
-
-    <% end %>
+  <% end %>
 
 <!-- NAVIGATION BAR -->   
 
