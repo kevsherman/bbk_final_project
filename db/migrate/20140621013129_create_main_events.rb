@@ -11,7 +11,7 @@ class CreateMainEvents < ActiveRecord::Migration
       t.time :end_time
       t.string :bride_full_name
       t.string :groom_full_name
-
+      t.boolean :rsvp_sent, default: false
       t.timestamps
     end
   end
