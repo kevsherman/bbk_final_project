@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140621013150) do
     t.time     "end_time"
     t.string   "bride_full_name"
     t.string   "groom_full_name"
+    t.boolean  "rsvp_sent",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
