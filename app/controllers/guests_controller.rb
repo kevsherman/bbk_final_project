@@ -25,9 +25,12 @@ class GuestsController < ApplicationController
   end
 
   def show
-    @main_event = MainEvent.where(user_id: session[:user_id]).first 
-    @sub_events = SubEvent.where(main_event_id: @main_event)
+    @main_event = MainEvent.where(user_id: session[:user_id]).first
     @guest = Guest.find(params[:id])
+    @assignment = Assignment.new
+    @assigned_events = @guest.sub_events
+    @unassigned_events = SubEvent.where.not(id: @guest.sub_event_ids).where(main_event_id: @main_event)
+    # binding.pry
   end
 
   def edit

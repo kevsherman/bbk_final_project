@@ -1,9 +1,3 @@
-<style>
-  .columns{
-    border:1px solid black;
-  }
-</style>
-
 <div class="row">
   <div class="large-10 columns">
     <h1><%= @sub_event.title %></h1>
@@ -26,6 +20,7 @@
           <%= fields_for(@assignment) do |assign| %>
             <%= collection_select(:assignment, :guest_id, @guests, :id, :first, {}, {multiple: true, style:'height:100px'}) %>
           <% end %>
+          <%= f.hidden_field :registration_type, value: "from_sub_event_show" %>
           <%= f.submit "Register Guests" %>
         <% end %>
         <a class="close-reveal-modal">&#215;</a>
