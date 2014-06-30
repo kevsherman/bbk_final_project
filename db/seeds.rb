@@ -38,10 +38,7 @@ User.all.each do |user|
     mainevent = MainEvent.create(
       user_id: user.id,
       title: Faker::Lorem.sentence,
-      date: Date.new(2014,i%12+1),
       description: Faker::Lorem.sentence,
-      start_time: Time.at(628232400+i*10000),
-      end_time: Time.at(628232400+i*10000),
       bride_full_name: Faker::Name.name,
       groom_full_name: Faker::Name.name
       )
