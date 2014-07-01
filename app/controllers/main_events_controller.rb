@@ -3,7 +3,9 @@ class MainEventsController < ApplicationController
   before_filter :restrict_main_access?, :except => [:create, :new, :update]
 
   def show
+    #scope main event by current user
     @main_event = MainEvent.find(params[:id])
+    # remove and create soonest scope on the subevents model
     @sub_events = SubEvent.where(main_event_id: params[:id]).order(:date).order(:start_time)
   end
   
@@ -18,7 +20,7 @@ class MainEventsController < ApplicationController
   def create
     @main_event = MainEvent.new(main_event_params)
     @main_event.user_id = session[:user_id]
-
+    # @main_event = current_user.events.build(main_event_params)
     if @main_event.save
       redirect_to main_event_path(@main_event.id)
     else
@@ -27,6 +29,7 @@ class MainEventsController < ApplicationController
   end
 
   def update
+    # scope by current_user
     @main_event = MainEvent.find(params[:id])
     if @main_event.update_attributes(main_event_params)
       redirect_to main_event_path(@main_event)

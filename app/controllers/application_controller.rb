@@ -17,6 +17,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_main_event
+    @main_event ||= current_user.main_event.find_by(id: params[:main_event_id]) if params[:main_event_id]
+  end
+  helper :current_main_event
+  
   def restrict_main_access?
     @main_event = MainEvent.where(user_id: session[:user_id]).first
     if @main_event.id.to_s != params[:id]  

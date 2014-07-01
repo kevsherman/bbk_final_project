@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   
   resources :main_events  do
+    resources :rsvps, only: [:index, :create]
     resources :sub_events do
       resources :assignments  
     end
