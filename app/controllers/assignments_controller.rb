@@ -18,4 +18,10 @@ class AssignmentsController < ApplicationController
     Assignment.destroy(@assignment)
     redirect_to :back
   end
+
+  def update
+    binding.pry
+  end
+ 
+
 end
