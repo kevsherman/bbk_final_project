@@ -27,7 +27,6 @@ class SubEventsController < ApplicationController
 
   def edit
     @main_event = MainEvent.where(user_id: session[:user_id]).first
-    binding.pry
     @sub_event = SubEvent.find(params[:id])
   end
 
@@ -39,6 +38,8 @@ class SubEventsController < ApplicationController
   def destroy
     @main_event = MainEvent.where(user_id: session[:user_id])
     @sub_event = SubEvent.find(params[:id])
+    @sub_event.destroy
+    redirect_to main_event_path(params[:main_event_id])
   end
 
   protected
