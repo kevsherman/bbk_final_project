@@ -27,14 +27,16 @@
     </div>
     <div class="large-4 columns">
       <h5>RSVP</h5>
-        <%= radio_button_tag(sub_event.id, "true") %>
+        <%= radio_button_tag("subEventId[#{sub_event.id.to_s}]", "true") %>
         <%= label_tag(:rsvp_true, "Attending") %>
 
-        <%= radio_button_tag(sub_event.id, "false") %>
+        <%= radio_button_tag("subEventId[#{sub_event.id.to_s}]", "false") %>
         <%= label_tag(:rsvp_false, "Regretfully Decline") %>
+
     </div>    
      <hr/>   
     <%end%>
+<%= f.hidden_field :guest_id, value: params[:id] %>    
 <%= f.hidden_field :registration_type, value: "from_guest_rsvp" %>
 <%= f.submit "submit rsvp" %>
 <% end %>

@@ -17,13 +17,14 @@ class Assignment < ActiveRecord::Base
     end
 
     elsif
-      #if it comes from the itinerary rsvp form
-      # loop through each assignment by id
-      # update attributes for rsvp column to true or false
       if params[:assignment][:registration_type] == "from_guest_rsvp"
-        binding.pry
+        rsvps = params[:subEventId]
+        rsvps.map do |sub_event_id, answer|
+          guest_event = Assignment.where(guest_id: params[:assignment][:guest_id]).where(sub_event_id: sub_event_id).first
+          guest_event.update(rsvp: answer)
+          guest_event.save
+        end
       end
-
     else
       Assignment.create(guest_id: params[:assignment][:guest_id], sub_event_id: params[:sub_event_id])
     end
