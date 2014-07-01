@@ -16,11 +16,11 @@
 
     <%= render 'layouts/header' unless current_page?(controller: 'home', action: 'index') %>
 
-    <%= favicon_link_tag 'favicon.ico' %>
-
   </head>
 
   <body>
+
+    <%= favicon_link_tag 'favicon.ico' %>
 
     <%= yield %>
     
