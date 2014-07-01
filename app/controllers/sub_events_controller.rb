@@ -26,7 +26,8 @@ class SubEventsController < ApplicationController
   end
 
   def edit
-    @main_event = MainEvent.where(user_id: session[:user_id])
+    @main_event = MainEvent.where(user_id: session[:user_id]).first
+    binding.pry
     @sub_event = SubEvent.find(params[:id])
   end
 
