@@ -15,6 +15,16 @@ class Assignment < ActiveRecord::Base
         new_assignment.save
       end
     end
+
+    elsif
+      if params[:assignment][:registration_type] == "from_guest_rsvp"
+        rsvps = params[:subEventId]
+        rsvps.map do |sub_event_id, answer|
+          guest_event = Assignment.where(guest_id: params[:assignment][:guest_id]).where(sub_event_id: sub_event_id).first
+          guest_event.update(rsvp: answer)
+          guest_event.save
+        end
+      end
     else
       Assignment.create(guest_id: params[:assignment][:guest_id], sub_event_id: params[:sub_event_id])
     end
