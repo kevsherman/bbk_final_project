@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
     resources :guests
   end
-
+  resources :itinerary, only: [:show]
   resources :sessions, only: [:new, :create, :destroy]
   resource :user, only: [:edit, :update]
 

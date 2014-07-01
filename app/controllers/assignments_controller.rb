@@ -12,8 +12,13 @@ class AssignmentsController < ApplicationController
 
   def destroy
     @assignment = Assignment.where(guest_id: params[:id]).where(sub_event_id: params[:sub_event_id]).first
-    # binding.pry
     Assignment.destroy(@assignment)
     redirect_to :back
   end
+
+  def update
+    binding.pry
+  end
+ 
+
 end
