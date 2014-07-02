@@ -1,6 +1,14 @@
 <h1>Edit Your Details</h1>
   <%= form_for @user do |f| %>
   <div>
+    <%= f.label "first name" %><br>
+    <%= f.text_field "firstname" %>
+  </div>
+  <div>
+    <%= f.label "last name" %><br>
+    <%= f.text_field "lastname" %>
+  </div>    
+  <div>
     <%= f.label "email" %><br>
     <%= f.text_field "email" %>
   </div>
