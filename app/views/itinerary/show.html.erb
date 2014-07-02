@@ -3,7 +3,17 @@
     border:1px solid black;
   }
 </style>
+<% if @guest.sub_events.first == nil%>
 
+<div class="row">
+  <div class="large-10 columns">
+    <h1><%= @guest.first %> <%= @guest.last %></h1>
+    <h5>You've been invited to: NOTHING LOSER</h5>
+  </div>
+  <div class="large-2 columns">
+  </div>
+</div>
+<% elsif %>
 <div class="row">
   <div class="large-10 columns">
     <h1><%= @guest.first %> <%= @guest.last %></h1>
@@ -12,6 +22,8 @@
   <div class="large-2 columns">
   </div>
 </div>
+
+
 
 <div class="row">
       
@@ -42,3 +54,4 @@
 <% end %>
 
 </div>
+<% end %>
