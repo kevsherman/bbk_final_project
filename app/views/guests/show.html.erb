@@ -1,3 +1,48 @@
-<h1> <%=@guest.first%> <%=@guest.last%></h1>
-<%= link_to "edit", edit_guest_path(@guest)%>
-<%= link_to "delete", guest_path(@guest), method: :delete, confirm: "Are you Sure?" %>
+<div class="row">
+  <div class="large-2 columns"><%= button_to "Edit This Guest", edit_main_event_guest_path, :method => "get" %></div>
+  <div class="large-10 columns"><%= button_to "Delete This Guest", main_event_guest_path, :method => :delete, confirm: "Are You Sure? " %>
+  </div>
+</div>
+
+<div class="row">
+  <h1> <%=@guest.first%> <%=@guest.last%></h1>
+  <h5> <%=@guest.email%></h5>
+  <br/>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h3>Invites for <%= @guest.first %> </h3>
+  </div>
+
+  <!-- List unassigned sub_events for guest -->
+  <div class="large-6 columns">
+    <a href="#" data-reveal-id="subEventModal">Add Guest to Another Event</a>
+        <div id="subEventModal" class="reveal-modal" data-reveal>
+          <% @unassigned_events.each do |subEvent| %>
+            <div class="row">
+              <div class="large-1 columns">
+                <%= form_for [@main_event, subEvent, @assignment], html:{ class: "button_to" } do |f| %>
+                  <%= f.hidden_field :registration_type, :value => "other" %>
+                  <%= f.hidden_field :guest_id, :value => @guest.id %>
+                  <%= f.submit "Add", :class => "link" %>
+                  <% end %>
+              </div>
+                <div class="large-11 columns">
+                  <h5><%= subEvent.title %></h5>
+                </div>
+            </div>
+          <% end %>
+        </div>
+  </div>
+</div>
+
+  <!-- List assigned sub_events for guest -->
+  <div class="row">
+    <% @assigned_events.each_with_index do |subEvent, index| %>
+      <a href="#" data-reveal-id="subEventModal_2<%=index%>"><h5><%=subEvent.title %></h5></a>
+      <div id="subEventModal_2<%=index%>" class="reveal-modal" data-reveal>
+        <div><%= button_to "Remove from #{subEvent.title}", main_event_sub_event_assignment_path(@main_event, subEvent, @guest), :method => "delete" %></div>
+      </div>
+    <% end %>
+  </div>

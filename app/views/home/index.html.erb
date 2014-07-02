@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/stylesheets/home.css.scss">
+
 <!-- This will display "Logged Out" notice after Log Out -->
 <% flash.each do |key, value| %>
   <%= content_tag(:div, value) %>
@@ -5,7 +7,7 @@
 
 <div class="row">
   <div class="large-4 columns">
-    <h1><img src="http://placehold.it/400x100&text=Logo Goes Here"/></h1>
+    <h1 id= "logo-font"><%= link_to "Black Tie", root_path %></a></h1>
   </div>
   <div class="large-8 columns">
     <ul class="right button-group">
@@ -33,12 +35,34 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="slider single-item">
-      <div><img src="http://placehold.it/1000x400&text=[ img 1 ]"/></div>
-      <div><img src="http://placehold.it/1000x400&text=[ img 2 ]"/></div>
-      <div><img src="http://placehold.it/1000x400&text=[ img 3 ]"/></div>
+      <div id = "slider-photo-1"><img src="/images/tumblr_mx3tpto69r1st5lhmo1_1280.jpg"></div>
+      <div id = "slider-photo-2"><img src="/images/IMG_4731-1300x866.jpg"></div>
+      <div id = "slider-photo-3"><img src="/images/tumblr_m0y71uyhoj1rrknxyo1_1280.jpg"></div>
     </div>
   </div>
 </div>
+
+<!-- <div class="row">
+  <div class="large-12 columns">
+    <ul class ="slick-dots" style="display: block;">
+      <li class="slick-active">
+        <button type="button">
+          ::before
+          "1
+        </button>
+      </li>
+      <li>
+        <button type="button">...</button>
+      </li>
+      <li>
+        <button type="button">...</button>
+      </li>
+      <li>
+        <button type="button">...</button>
+      </li>
+    </ul>
+  </div>
+</div> -->
  
 <div class="row">
   <div class="large-12 columns">

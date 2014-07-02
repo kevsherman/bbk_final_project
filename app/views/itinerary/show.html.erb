@@ -1,0 +1,44 @@
+<style>
+  .columns{
+    border:1px solid black;
+  }
+</style>
+
+<div class="row">
+  <div class="large-10 columns">
+    <h1><%= @guest.first %> <%= @guest.last %></h1>
+    <h5>You've been invited to:</h5>
+  </div>
+  <div class="large-2 columns">
+  </div>
+</div>
+
+<div class="row">
+      
+<%= form_for [@main_event, @guest.sub_events.first, @assignment] do |f| %>     
+
+  <% @guest.sub_events.each do |sub_event| %>
+    <div class="large-8 columns">
+      <h5><strong><%= sub_event.title %>  </strong> </h5>
+      <h6>Date: <%= sub_event.date %></h6>
+      <h6>Location: <%= sub_event.location %> </h6>
+      <h6>Start-Time: <%= sub_event.start_time.to_s(:time)%></h6>
+      <h6> Dress: <%= sub_event.attire %> </h6>
+    </div>
+    <div class="large-4 columns">
+      <h5>RSVP</h5>
+        <%= radio_button_tag("subEventId[#{sub_event.id.to_s}]", "true") %>
+        <%= label_tag(:rsvp_true, "Attending") %>
+
+        <%= radio_button_tag("subEventId[#{sub_event.id.to_s}]", "false") %>
+        <%= label_tag(:rsvp_false, "Regretfully Decline") %>
+
+    </div>    
+     <hr/>   
+    <%end%>
+<%= f.hidden_field :guest_id, value: params[:id] %>    
+<%= f.hidden_field :registration_type, value: "from_guest_rsvp" %>
+<%= f.submit "submit rsvp" %>
+<% end %>
+
+</div>

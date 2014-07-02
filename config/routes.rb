@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   resources :users
   
   resources :main_events  do
-    resources :sub_events
+    resources :rsvps, only: [:index, :create]
+    resources :sub_events do
+      resources :assignments  
+    end
     resources :guests
   end
-
+  resources :itinerary, only: [:show]
   resources :sessions, only: [:new, :create, :destroy]
   resource :user, only: [:edit, :update]
 

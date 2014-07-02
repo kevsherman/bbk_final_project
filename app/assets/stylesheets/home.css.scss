@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 #drop {
   z-index: 2;
 }
@@ -10,4 +9,32 @@
 .single-item {
   position: relative;
   z-index: 1;
+}
+
+.single-item img {
+  width: 100%;
+  height: auto;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+
+h1#logo-font {
+  font-family: 'Satisfy', cursive;
+  font-size: 84px;
+}
+
+.slick-dots li button {
+border: 0;
+background: transparent;
+display: block;
+height: 20px;
+width: 20px;
+outline: none;
+line-height: 0;
+font-size: 0;
+color: transparent;
+padding: 5px;
+cursor: pointer;
+outline: none;
 }
