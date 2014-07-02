@@ -40,6 +40,11 @@ class SubEventsController < ApplicationController
   def update
     @main_event = MainEvent.where(user_id: session[:user_id])
     @sub_event = SubEvent.find(params[:id])
+    if @sub_event.update_attributes(sub_event_params)
+      redirect_to main_event_sub_event_path
+    else
+      render :edit
+    end
   end
 
   def destroy
