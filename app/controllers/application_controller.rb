@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :formatted_date, :logged_in?, :restrict_access?, :rsvp_status
+  helper_method :current_user, :formatted_date, :logged_in?, :restrict_access?, :rsvp_status, :thankyou
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -36,6 +36,10 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "You must be update your password before continuing"
       redirect_to main_event_path(@main_event) 
     end
+  end
+
+  def thankyou
+    render '/thankyou'
   end
   
 end
