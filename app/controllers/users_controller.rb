@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      UserMailer.welcome_email(@user).deliver
+      # UserMailer.welcome_email(@user).deliver
       redirect_to new_main_event_path
     else
       render :new
