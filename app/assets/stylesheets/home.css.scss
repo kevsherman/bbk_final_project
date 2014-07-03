@@ -4,17 +4,11 @@
 
 h1#logo-font {
   font-family: 'Satisfy', cursive;
-  font-size: 60px;
+  font-size: 36px;
 }
 
 #drop {
   z-index: 2;
-}
-
-body {
-  top: 0;
-  left: 0;
-  bottom: 0;
 }
 
 .autoplay {
@@ -29,12 +23,12 @@ body {
 }
 
 #text-1 {
-  font-family: 'Proxima Nova Light';
-  font-size: 3em;
+  font-family: 'Satisfy', cursive;
+  font-size: 180px;
   text-align: center;
   position: absolute;
-  bottom: 70%;
-  left: 60%;
+  bottom: 60%;
+  left: 31%;
   color: white;
   text-shadow:
     -1px -1px 0 #000,
