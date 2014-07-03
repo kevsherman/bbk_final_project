@@ -35,5 +35,6 @@
 //= require foundation/foundation.topbar
 //= require main_event
 //= require sub_event
-
+//= require confirm_with_reveal
+//= require confirm
 

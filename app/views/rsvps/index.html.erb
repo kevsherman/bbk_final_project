@@ -1,9 +1,9 @@
 <h1>rsvps </h1>
 
-<%= button_to "email rsvps" %>
+<%= button_to "email rsvps", class: 'button' %>
 
 <% @sub_events.each do |subEvent| %>
 
   <h3><%= subEvent.title %> - <%= subEvent.guests.count %> invites pending</h3>
-
+ <hr/>
 <% end %>
