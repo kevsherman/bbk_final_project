@@ -1,6 +1,7 @@
 $(function(){ 
   $(document).foundation(); 
   $('.autoplay').slick({
+    //arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -13,4 +14,3 @@ $(function(){
     cssEase: 'linear'
   });
 });
-
