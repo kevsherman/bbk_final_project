@@ -18,7 +18,7 @@
 
 
 <div class="row">
-    <% @sub_events.each do |sub_event| %>
+    <% @sub_events.each_with_index do |sub_event, index| %>
       <div class="row">
         <div class="large-2 columns">
           <h5><%= sub_event.date.to_s(:long) %></h5>
@@ -31,10 +31,72 @@
         
           <!-- render response stats if rsvps were sent -->
           <% if @main_event.rsvp_sent %>
-            <div id="response_chart" style="width:500px; height:50px;"></div>
-            <% sub_event.assignments.each do |assignment| %>
 
-            <% end %>
+            <!-- pull assignment data for each event -->
+
+            <div id="response_chart_<%=index%>" style="width:500px; height:50px;"></div>
+
+            <script type="text/javascript" charset="utf-8">
+              $(function(){
+                $('#response_chart_'+<%=index%>).highcharts({
+                  chart:{
+                    type: 'bar',
+                    spacing: [0,0,0,0],
+                    margin: [0,0,0,0]
+                  },
+                  title:{
+                    text: null
+                  },
+                  yAxis:{ 
+                    gridLineWidth: 0,
+                    minorGridLineWidth: 0,
+                    labels:{
+                      enabled:false
+                    },
+                     title:{
+                      enabled:false
+                    }
+                  },
+                  xAxis:{
+                    categories:['RSVPs'],
+                    labels:{
+                      enabled:false
+                    },
+                    minorTickLength: 0,
+                    tickLength: 0,
+                    lineWidth: 0,
+                    minorGridLineWidth: 0,
+                    lineColor: 'transparent',
+                    title:{
+                      enabled:false
+                    }
+                  },
+                  plotOptions:{
+                    series: {
+                      stacking: 'normal',
+                      groupPadding: -1
+                    }
+                  },
+                  legend:{
+                    enabled:false
+                  },
+                  series:[{
+                    name: 'No Response',
+                    data: [<%=@nil_counts[sub_event.id]%>],
+                    color: '#A3A3A3'
+                  },{
+                    name: 'Declined',
+                    data: [<%=@false_counts[sub_event.id]%>],
+                    color: '#FF0000'
+                  },{
+                    name: 'Attending',
+                    data: [<%=@true_counts[sub_event.id]%>],
+                    color: '#00FF00'
+                  }]
+                  });
+                });
+               
+              </script>
 
           <%end%>
 
@@ -44,64 +106,4 @@
     <% end %>
 </div>
 
-<script type="text/javascript" charset="utf-8">
-$(function(){
-  $('#response_chart').highcharts({
-    chart:{
-      type: 'bar',
-      spacing: [0,0,0,0],
-      margin: [0,0,0,0]
-    },
-    title:{
-      text: null
-    },
-    yAxis:{ 
-      gridLineWidth: 0,
-      minorGridLineWidth: 0,
-      labels:{
-        enabled:false
-      },
-       title:{
-        enabled:false
-      }
-    },
-    xAxis:{
-      categories:['RSVPs'],
-      labels:{
-        enabled:false
-      },
-      minorTickLength: 0,
-      tickLength: 0,
-      lineWidth: 0,
-      minorGridLineWidth: 0,
-      lineColor: 'transparent',
-      title:{
-        enabled:false
-      }
-    },
-    plotOptions:{
-      series: {
-        stacking: 'normal',
-        groupPadding: -1
-      }
-    },
-    legend:{
-      enabled:false
-    },
-    series:[{
-      name: 'No Response',
-      data: [10],
-      color: '#A3A3A3'
-    },{
-      name: 'Declined',
-      data: [4],
-      color: '#FF0000'
-    },{
-      name: 'Attending',
-      data: [9],
-      color: '#00FF00'
-    }]
-    });
-  });
- 
-</script>
+

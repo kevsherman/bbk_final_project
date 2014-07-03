@@ -17,11 +17,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def rsvps_sent?
-    @main_event = MainEvent.where(user_id: session[:user_id]).first
-    return @main_event.rsvps_sent
-  end
-
   # def current_main_event
   #   @main_event ||= current_user.main_event.find_by(id: params[:main_event_id]) if params[:main_event_id]
   # end

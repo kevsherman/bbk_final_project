@@ -7,6 +7,25 @@ class MainEventsController < ApplicationController
     @main_event = MainEvent.find(params[:id])
     # remove and create soonest scope on the subevents model
     @sub_events = SubEvent.where(main_event_id: params[:id]).order(:date).order(:start_time)
+
+    @true_counts = Hash.new(0)
+    @false_counts = Hash.new(0)
+    @nil_counts = Hash.new(0)
+    
+    @sub_events.each do |sub_event|
+
+      sub_event.guests.each do |guest|
+        guest.assignment.each do |assignment|
+          if assignment.rsvp == true
+            @true_counts[sub_event.id] += 1
+          elsif assignment.rsvp == false
+            @false_counts[sub_event.id] += 1
+          else
+            @nil_counts[sub_event.id] += 1
+          end
+        end
+      end
+    end
   end
   
   def new 
