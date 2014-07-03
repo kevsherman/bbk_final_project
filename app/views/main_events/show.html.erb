@@ -6,24 +6,102 @@
   </div>
 </div>
 
+
 <div class="row">
-  <div class="large-9 columns">
+  <div class="large-6 columns">
+    <%= button_to "Guest List", main_event_guests_path(@main_event), :method => "get" %>
+  </div>
+  <div class="large-6 columns">  
+    <%= button_to "RSVP's", main_event_rsvps_path(@main_event), :method => "get" %>
+  </div>  
+</div>
+
+
+<div class="row">
     <% @sub_events.each do |sub_event| %>
       <div class="row">
-        <div class="large-3 columns">
+        <div class="large-2 columns">
           <h5><%= sub_event.date.to_s(:long) %></h5>
           <h5><%= sub_event.start_time.to_s(:time) %> </h5>
         </div>
-        <div class="large-9 columns">  
-          <h2><%= link_to sub_event.title, main_event_sub_event_path(@main_event, sub_event) %></h2>
+        <div class="large-4 columns">  
+          <h4><%= link_to sub_event.title, main_event_sub_event_path(@main_event, sub_event) %></h4>
+        </div>
+        <div class="large-6 columns">
+        
+          <!-- render response stats if rsvps were sent -->
+          <% if @main_event.rsvp_sent %>
+            <div id="response_chart" style="width:500px; height:50px;"></div>
+            <% sub_event.assignments.each do |assignment| %>
+
+            <% end %>
+
+          <%end%>
+
         </div>
         <hr/>
       </div>
     <% end %>
-  </div>
-
-  <div class="large-3 columns">
-    <%= button_to "Guest List", main_event_guests_path(@main_event), :method => "get" %>
-    <%= button_to "RSVP's", main_event_rsvps_path(@main_event), :method => "get" %>
-  </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  $('#response_chart').highcharts({
+    chart:{
+      type: 'bar',
+      spacing: [0,0,0,0],
+      margin: [0,0,0,0]
+    },
+    title:{
+      text: null
+    },
+    yAxis:{ 
+      gridLineWidth: 0,
+      minorGridLineWidth: 0,
+      labels:{
+        enabled:false
+      },
+       title:{
+        enabled:false
+      }
+    },
+    xAxis:{
+      categories:['RSVPs'],
+      labels:{
+        enabled:false
+      },
+      minorTickLength: 0,
+      tickLength: 0,
+      lineWidth: 0,
+      minorGridLineWidth: 0,
+      lineColor: 'transparent',
+      title:{
+        enabled:false
+      }
+    },
+    plotOptions:{
+      series: {
+        stacking: 'normal',
+        groupPadding: -1
+      }
+    },
+    legend:{
+      enabled:false
+    },
+    series:[{
+      name: 'No Response',
+      data: [10],
+      color: '#A3A3A3'
+    },{
+      name: 'Declined',
+      data: [4],
+      color: '#FF0000'
+    },{
+      name: 'Attending',
+      data: [9],
+      color: '#00FF00'
+    }]
+    });
+  });
+ 
+</script>

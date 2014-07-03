@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :formatted_date, :logged_in?, :restrict_access?, :rsvp_status, :thankyou
+  helper_method :current_user, :formatted_date, :logged_in?, :restrict_access?, :rsvps_sent?, :thankyou
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
       @current_main_event = MainEvent.where(user_id: session[:user_id]).first
       redirect_to main_event_path(@current_main_event)
     end
+  end
+
+  def rsvps_sent?
+    @main_event = MainEvent.where(user_id: session[:user_id]).first
+    return @main_event.rsvps_sent
   end
 
   # def current_main_event
