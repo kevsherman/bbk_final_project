@@ -13,16 +13,13 @@ class MainEventsController < ApplicationController
     @nil_counts = Hash.new(0)
     
     @sub_events.each do |sub_event|
-
-      sub_event.guests.each do |guest|
-        guest.assignment.each do |assignment|
-          if assignment.rsvp == true
-            @true_counts[sub_event.id] += 1
-          elsif assignment.rsvp == false
-            @false_counts[sub_event.id] += 1
-          else
-            @nil_counts[sub_event.id] += 1
-          end
+      sub_event.assignments.each do |assignment|
+        if assignment.rsvp == "true"
+          @true_counts[sub_event.id] += 1
+        elsif assignment.rsvp == "false"
+          @false_counts[sub_event.id] += 1
+        elsif assignment.rsvp == "no_response"
+          @nil_counts[sub_event.id] += 1
         end
       end
     end
