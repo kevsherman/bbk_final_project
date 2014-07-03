@@ -3,11 +3,11 @@ class GuestsController < ApplicationController
     
   def index
     @main_event = MainEvent.where(user_id: session[:user_id]).first
-    @guests = Guest.all
+    @guests = @main_event.guests 
   end
 
   def create
-    @guest= Guest.new(guest_params)
+    @guest = Guest.new(guest_params)
     @guest.main_event_id = params[:main_event_id]
     
     if @guest.save

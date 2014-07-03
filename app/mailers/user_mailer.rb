@@ -1,5 +1,4 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
 
   def welcome_email(user)
     @user = user
@@ -10,7 +9,7 @@ class UserMailer < ActionMailer::Base
   def invite_guests(guest, main_event)
     @guest = guest
     @main_event = main_event
-    mail(to: guest.email, subject: "you've been invited to #{@main_event.title}")
+    mail(to: guest.email, from: "admin@blacktie.com", subject: "you've been invited to #{@main_event.title}")
   end
 
 

@@ -7,8 +7,16 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    Assignment.create_for_type(params)
-    redirect_to :back
+    if params[:assignment][:registration_type] == "from_sub_event_show"
+      Assignment.create_for_type(params)
+      redirect_to :back
+    elsif params[:assignment][:registration_type] == "from_guest_rsvp"
+      Assignment.update_for_type(params)
+      redirect_to :thankyou
+    else
+      Assignment.create(guest_id: params[:assignment][:guest_id], sub_event_id: params[:sub_event_id])
+      redirect_to :back
+    end  
   end
 
   def destroy
@@ -18,10 +26,4 @@ class AssignmentsController < ApplicationController
     Assignment.destroy(@assignment)
     redirect_to :back
   end
-
-  def update
-    binding.pry
-  end
- 
-
 end
