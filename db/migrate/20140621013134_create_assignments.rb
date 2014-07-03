@@ -3,7 +3,7 @@ class CreateAssignments < ActiveRecord::Migration
     create_table :assignments do |t|
       t.integer :guest_id
       t.integer  :sub_event_id
-      t.boolean :rsvp
+      t.string :rsvp, default: "no_response"
       t.timestamps
     end
   end
