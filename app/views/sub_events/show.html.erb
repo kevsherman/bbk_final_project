@@ -6,8 +6,8 @@
     <h4>From <%= @sub_event.start_time.to_s(:time) %> to <%= @sub_event.end_time.to_s(:time) %></h4>
   </div>
   <div class="large-2 columns"><%= button_to "Edit Event", edit_main_event_sub_event_path(@main_event.first, @sub_event), method: "get"%>
-  <div class="large-2 columns"><%= button_to "Delete Event", main_event_sub_event_path(@main_event.first, @sub_event), method: "delete", data: {confirm: "Are you sure you want to delete this event?"} %>
-  </div>
+  <div class="large-2 columns"><%= button_to "Delete Event", main_event_sub_event_path(@main_event.first, @sub_event), class: "deleteReveal", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
+  </div> 
 </div>
 
 <div class="row">

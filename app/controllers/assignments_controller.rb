@@ -15,6 +15,7 @@ class AssignmentsController < ApplicationController
       redirect_to :thankyou
     else
       Assignment.create(guest_id: params[:assignment][:guest_id], sub_event_id: params[:sub_event_id])
+      redirect_to :back
     end  
   end
 
