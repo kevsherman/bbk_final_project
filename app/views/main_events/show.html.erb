@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="large-2 columns"><%= button_to "Edit Event", edit_main_event_path(@main_event), :method => "get" %></div>
+  <div class="large-2 columns"><%= button_to "Edit Event", edit_main_event_path(@main_event), class: "button", :method => "get" %></div>
   <div class="large-10 columns">
     <h1> <%= @main_event.title   %>! </h1> 
     <p><%= link_to "Create a SubEvent!", new_main_event_sub_event_path(@main_event) %></p>
@@ -8,10 +8,10 @@
 
 <div class="row">
   <div class="large-6 columns">
-    <%= button_to "Guest List", main_event_guests_path(@main_event), :method => "get" %>
+    <%= button_to "Guest List", main_event_guests_path(@main_event), class: "button", :method => "get" %>
   </div>
   <div class="large-6 columns">  
-    <%= button_to "RSVP's", main_event_rsvps_path(@main_event), :method => "get" %>
+    <%= button_to "RSVP's", main_event_rsvps_path(@main_event), class: "button", :method => "get" %>
   </div>  
 </div>
 

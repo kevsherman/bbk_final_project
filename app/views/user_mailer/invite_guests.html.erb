@@ -1,10 +1,18 @@
-<h1>hello world</h1>
+  
 
-<p> Hello <%= @guest.first %>! </p>
+<body style="background-color: #F2DEDE;">
+<h1 class="header" style="margin-top: 100px;text-align: center;font-size: 30px;font-family: cursive;"><%= @main_event.bride_full_name%> & <%= @main_event.groom_full_name%></h1>
 
-<p> You've been asked to attend <%= @main_event.title %></p>
-
-<p> Please follow this <a href="http://blacktie.guru/itinerary/<%= @guest.id %>">link to rsvp</a></p>
-
+<p style="text-align: center;font-size: 20px;font-family: cursive;"> request the pleasure of the company of </p>
+<p style="text-align: center;font-size: 20px;font-family: cursive;"><%= @guest.first %> </p>
 
 
+
+<p style="text-align: center;font-size: 20px;font-family: cursive;"> to celebrate thier marriage </p>
+
+<p style="text-align: center;font-size: 20px;font-family: cursive;"> Please follow this link to rsvp</p>
+<p style="text-align: center;font-size: 20px;font-family: cursive;"><a href="http://arcane-citadel-4179.herokuapp.com/itinerary/<%= @guest.id %>">blacktie something or other</a></p>
+
+
+
+</body>
