@@ -11,19 +11,17 @@ h1#logo-font {
   z-index: 2;
 }
 
-.autoplay {
-  position: relative;
-  z-index: 1;
-}
-
-.autoplay img {
+.landing img {
   width: 100%;
   height: 90%;
   position: relative;
+  background-size: 100%;
 }
 
-
-
+.button-group {
+  z-index: 1;
+  position: absolute;
+}
 
 #text-1 {
   font-family: 'Satisfy', cursive;
@@ -32,6 +30,7 @@ h1#logo-font {
   position: absolute;
   bottom: 60%;
   left: 31%;
+  background-size: 100%;
   color: white;
   text-shadow:
     -1px -1px 0 #000,
@@ -41,32 +40,42 @@ h1#logo-font {
 }
 
 #text-2 {
-  font-family: 'Proxima Nova Light';
+  font-family: 'Lora';
   font-size: 4em;
-  text-align: center;
+  float: left;
   position: absolute;
-  bottom: 15%;
-  left: 35%;
+  bottom: 46%;
+  left: 11%;
+  background-size: 100%;
   color: white;
   text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;  
-
 }
 
 #text-3 {
-  font-family: 'Proxima Nova Light';
+  font-family: 'Lora';
   font-size: 4em;
-  text-align: center;
+  float: left;
   position: absolute;
-  bottom: 5%;
-  left: 15%;
+  bottom: 25%;
+  left: 11%;
+  background-size: 100%;
   color: white;
   text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;  
+}
+
+.product-details {
+  text-align: center;
+  background-size: 100%;
+}
+
+.product-details p {
+  text-align: left;
 }
