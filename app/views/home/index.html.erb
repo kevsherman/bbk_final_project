@@ -1,21 +1,10 @@
 <link rel="stylesheet" href="/stylesheets/home.css.scss">
 
-<div class ="fixed">
-  <nav class="top-bar" data-topbar>
-    <ul class="title-area">
-      <li class="name">
-        <h1 id= "logo-font"><%= link_to "Black Tie", root_path %></a></h1>
-      </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-    </ul>
-
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li><a href="#" class="button">About Us</a></li>
-        <li><a href="users/new" class="button">Sign Up</a></li>
-        <li><a href="#" class="button" data-reveal-id="myModal">Log In</a></li>
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="right button-group">
+      <li><a href="users/new" class="button">Sign Up</a></li>
+      <li><a href="#" class="button" data-reveal-id="myModal">Log In</a></li>
           <div id="myModal" class="reveal-modal tiny" data-reveal>
             <%= form_tag sessions_path do %>
               <div>
@@ -30,62 +19,52 @@
             <% end %>
             <a class="close-reveal-modal">&#215;</a>
           </div>
-      </ul>
-    </section>
-  </nav>
+        </div>
+    </ul>
+  </div>
 </div>
 
-<div class="slider autoplay">
-    <div id = "slider-photo-1"><img src="/images/london-event-photographer-01.jpg">
-      <p id ="text-1">
-        Black Tie
-      </p>
+<div class="landing">
+  <div id = "landing-photo"><img src="/images/london-event-photographer-01.jpg">
+    <p id = "text-1">Black Tie</p>
       <br>
-      <p id ="text-2">
-        RSVP Management.
-      </p>
+    <p id ="text-2">RSVP Management</p>
       <br>
-      <p id ="text-3">
-      Made Easy.
-      </p>
+    <p id ="text-3">Made Easy.</p>
+  </div>
+</div>
+
+<div class="row">
+ <div class = "product-details">
+    <div class="large-3 columns">
+      <i class="fa fa-umbrella fa-5x"></i>
+      <h4>Host Multiple Events Under One Umbrella</h4>
+        <p>We provide a user friendly interface to create and manage the details of every meeting, dinner or cocktail hour related to your event.</p>
     </div>
-    <div id = "slider-photo-2"><img src="/images/tumblr_mx3tpto69r1st5lhmo1_1280.jpg">
-      <p id ="text-4">
-        Assign Guests to Multiple Events
-        <br>
-        We'll Notify your Guests by Email
-        <br>
-        See RSVP Confirmations in Real Time 
-      </p>
+
+    <div class="large-3 columns">
+      <i class="fa fa-user fa-5x"></i>
+      <h4>Assign Guests to Multiple Events</h4>
+        <p>Once you've created your guest list, simply assign desired guests to each event.</p>
+    </div>    
+    
+    <div class="large-3 columns">
+      <i class="fa fa-envelope-square fa-5x"></i>
+      <h4>We'll Notify Your Guests Via E-mail</h4>
+        <p>After all the event details are to your liking, click send and your guests will be directed to an RSVP response page.</p>
     </div>
-    <div id = "slider-photo-3"><img src="/images/tumblr_m0y71uyhoj1rrknxyo1_1280.jpg">
-      <p id ="text-5">
-        Let us do your dirty work, so you can focus on what really matters.
-      </p>
+    
+    <div class="large-3 columns">
+      <i class="fa fa-clock-o fa-5x"></i>
+      <h4>See Responses in Real Time</h4>
+        <p>Black Tie gives you all the pertinent details of your guest responses with helpful visualizations.</p>
     </div>
   </div>
 </div>
 
-<footer class="row">
-  <div class="large-12 columns">
-    <hr/>
-    <div class="row">
-      <div class="large-6 columns">
-        <p>© Copyright BBK Final Projects. 2014.</p>
-      </div>
-      <div class="large-6 columns">
-        <ul class="inline-list right">
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Instagram</a></li>
-        </ul>
-      </div>
-  </div> 
-
+<footer>
   <!-- This will display "Logged Out" notice after Log Out -->
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value) %>
   <% end %>
-
 </footer>
-

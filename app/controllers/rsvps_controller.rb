@@ -14,7 +14,7 @@ class RsvpsController < ApplicationController
       UserMailer.invite_guests(guest, @main_event).deliver
     end
     @main_event.update(rsvp_sent: true)
-    redirect_to :back
+    redirect_to main_event_path(@main_event)
   end
 
 end
