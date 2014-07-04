@@ -1,20 +1,46 @@
 <div class="row">
-  <div class="large-8 columns">
+  <div class="large-6 columns">
     <h1><%= @sub_event.title %></h1>
     <h4><%= @sub_event.description %></h4>
     <h4><%= @sub_event.date.to_s(:long) %></h4>
     <h4>From <%= @sub_event.start_time.to_s(:time) %> to <%= @sub_event.end_time.to_s(:time) %></h4>
   </div>
-  <div class="large-4 columns">
-    pie chart goes here
+  <div class="large-6 columns">
+     <!-- if rsvps were sent, render response stats  -->
+        <% if @main_event.rsvp_sent %>
+
+          <!-- build chart for each sub_event -->
+          <div id="response_chart" style="width:500px; height:400px;"></div>
+
+          <script type="text/javascript" charset="utf-8">
+            $(function(){
+              $('#response_chart').highcharts({
+                chart: {
+                  backgroundColor: null
+                },
+                title:{
+                  text: null
+                },
+                series: [{
+                  type: 'pie',
+                  data: [ 
+                      {name:'No Response', y: <%=@nil_count%>, color: 'gray'},
+                      {name:'Attending', y: <%=@true_count%>, color: 'green'},
+                      {name:'Declined', y: <%=@false_count%>, color: 'red'}
+                      ]
+                 }]
+                });
+              });
+            </script>
+        <%end%>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-2 columns"><%= button_to "Edit Event", edit_main_event_sub_event_path(@main_event.first, @sub_event), class: "button", method: "get"%>
+  <div class="large-2 columns"><%= button_to "Edit Event", edit_main_event_sub_event_path(@main_event, @sub_event), class: "button", method: "get"%>
   </div>
   <div class="large-2 columns">
-  <%= button_to "Delete Event", main_event_sub_event_path(@main_event.first, @sub_event), class: "button", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
+  <%= button_to "Delete Event", main_event_sub_event_path(@main_event, @sub_event), class: "button", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
   </div> 
   <div class="large-8 columns"></div>
   <hr/>
@@ -27,7 +53,7 @@
   <div class="large-2 columns">  
     <a href="#" class= "button" data-reveal-id="myModal">Register Guests</a>
       <div id="myModal" class="reveal-modal" data-reveal>
-        <%= form_for [@main_event.first, @sub_event, @assignment] do |f| %>
+        <%= form_for [@main_event, @sub_event, @assignment] do |f| %>
           <%= fields_for(@assignment) do |assign| %>
             <%= collection_select(:assignment, :guest_id, @guests, :id, :full_name,  {}, {multiple: true, style:'height:100px'}) %>
           <% end %>
@@ -45,7 +71,7 @@
 <div class="row">
   <% @guestlist.each_with_index do |guest, index| %>
     <a href="#" data-reveal-id="guestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %></strong> 
-    <%if @main_event.first.rsvp_sent == true%>
+    <%if @main_event.rsvp_sent == true%>
       <%= guest.assignment.where(sub_event_id: @sub_event).first.rsvp %></h5></a>
     <%end%>  
    
@@ -58,7 +84,7 @@
        <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event, guest), class: "button",  :method => "delete" %>
       </div>
       <div class="large-4 columns">
-        <%= button_to "Full Guest Details", main_event_guest_path(@main_event.first , guest), class: "button", :method => "get" %>
+        <%= button_to "Full Guest Details", main_event_guest_path(@main_event, guest), class: "button", :method => "get" %>
        <a class="close-reveal-modal">x</a>
       </div>
      </div>
