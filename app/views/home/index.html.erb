@@ -1,37 +1,39 @@
 <link rel="stylesheet" href="/stylesheets/home.css.scss">
 
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1 id= "logo-font"><%= link_to "Black Tie", root_path %></a></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li><a href="#" class="button">About Us</a></li>
-      <li><a href="users/new" class="button">Sign Up</a></li>
-      <li><a href="#" class="button" data-reveal-id="myModal">Log In</a></li>
-        <div id="myModal" class="reveal-modal tiny" data-reveal>
-          <%= form_tag sessions_path do %>
-            <div>
-              <%= label_tag "email" %><br/>
-              <%= text_field_tag "email" %>
-            </div>
-            <div>
-              <%= label_tag :password %><br/>
-              <%= password_field_tag :password %>
-            </div>
-            <div><%= submit_tag "Log In" %></div>
-          <% end %>
-          <a class="close-reveal-modal">&#215;</a>
-        </div>
+<div class ="fixed">
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1 id= "logo-font"><%= link_to "Black Tie", root_path %></a></h1>
+      </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
-  </section>
-</nav>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li><a href="#" class="button">About Us</a></li>
+        <li><a href="users/new" class="button">Sign Up</a></li>
+        <li><a href="#" class="button" data-reveal-id="myModal">Log In</a></li>
+          <div id="myModal" class="reveal-modal tiny" data-reveal>
+            <%= form_tag sessions_path do %>
+              <div>
+                <%= label_tag "email" %><br/>
+                <%= text_field_tag "email" %>
+              </div>
+              <div>
+                <%= label_tag :password %><br/>
+                <%= password_field_tag :password %>
+              </div>
+              <div><%= submit_tag "Log In" %></div>
+            <% end %>
+            <a class="close-reveal-modal">&#215;</a>
+          </div>
+      </ul>
+    </section>
+  </nav>
+</div>
 
 <div class="slider autoplay">
     <div id = "slider-photo-1"><img src="/images/london-event-photographer-01.jpg">
