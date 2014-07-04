@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="large-2 columns"><%= button_to "Edit Event", edit_main_event_path(@main_event), :method => "get" %></div>
+  <div class="large-2 columns"><%= button_to "Edit Event", edit_main_event_path(@main_event), class: "button", :method => "get" %></div>
   <div class="large-10 columns">
     <h1> <%= @main_event.title   %>! </h1> 
     <p><%= link_to "Create a SubEvent!", new_main_event_sub_event_path(@main_event) %></p>
@@ -7,23 +7,98 @@
 </div>
 
 <div class="row">
-  <div class="large-9 columns">
-    <% @sub_events.each do |sub_event| %>
-      <div class="row">
-        <div class="large-3 columns">
-          <h5><%= sub_event.date.to_s(:long) %></h5>
-          <h5><%= sub_event.start_time.to_s(:time) %> </h5>
-        </div>
-        <div class="large-9 columns">  
-          <h2><%= link_to sub_event.title, main_event_sub_event_path(@main_event, sub_event) %></h2>
-        </div>
-        <hr/>
-      </div>
-    <% end %>
+  <div class="large-6 columns">
+    <%= button_to "Guest List", main_event_guests_path(@main_event), class: "button", :method => "get" %>
   </div>
-
-  <div class="large-3 columns">
-    <%= button_to "Guest List", main_event_guests_path(@main_event), :method => "get" %>
-    <%= button_to "RSVP's", main_event_rsvps_path(@main_event), :method => "get" %>
-  </div>
+  <div class="large-6 columns">  
+    <%= button_to "RSVP's", main_event_rsvps_path(@main_event), class: "button", :method => "get" %>
+  </div>  
 </div>
+
+<!-- List each subevent -->
+<div class="row">
+  <% @sub_events.each_with_index do |sub_event, index| %>
+    <div class="row">
+      <div class="large-2 columns">
+        <h5><%= sub_event.date.to_s(:long) %></h5>
+        <h5><%= sub_event.start_time.to_s(:time) %> </h5>
+      </div>
+      <div class="large-4 columns">  
+        <h4><%= link_to sub_event.title, main_event_sub_event_path(@main_event, sub_event) %></h4>
+      </div>
+      <div class="large-6 columns">
+      
+        <!-- if rsvps were sent, render response stats  -->
+        <% if @main_event.rsvp_sent %>
+
+          <!-- build chart for each sub_event -->
+          <div id="response_chart_<%=index%>" style="width:500px; height:50px;"></div>
+
+          <script type="text/javascript" charset="utf-8">
+            $(function(){
+              $('#response_chart_'+<%=index%>).highcharts({
+                chart:{
+                  type: 'bar',
+                  spacing: [0,0,0,0],
+                  margin: [0,0,0,0]
+                },
+                title:{
+                  text: null
+                },
+                yAxis:{ 
+                  gridLineWidth: 0,
+                  minorGridLineWidth: 0,
+                  labels:{
+                    enabled:false
+                  },
+                   title:{
+                    enabled:false
+                  }
+                },
+                xAxis:{
+                  categories:['RSVPs'],
+                  labels:{
+                    enabled:false
+                  },
+                  minorTickLength: 0,
+                  tickLength: 0,
+                  lineWidth: 0,
+                  minorGridLineWidth: 0,
+                  lineColor: 'transparent',
+                  title:{
+                    enabled:false
+                  }
+                },
+                plotOptions:{
+                  series: {
+                    stacking: 'percent',
+                    groupPadding: -1
+                  }
+                },
+                legend:{
+                  enabled:false
+                },
+                series:[{
+                  name: 'No Response',
+                  data: [<%=@nil_counts[sub_event.id]%>],
+                  color: '#A3A3A3'
+                },{
+                  name: 'Declined',
+                  data: [<%=@false_counts[sub_event.id]%>],
+                  color: '#FF0000'
+                },{
+                  name: 'Attending',
+                  data: [<%=@true_counts[sub_event.id]%>],
+                  color: '#00FF00'
+                }]
+                });
+              });
+            </script>
+        <%end%>
+      </div>
+      <hr/>
+    </div>
+  <% end %>
+</div>
+
+

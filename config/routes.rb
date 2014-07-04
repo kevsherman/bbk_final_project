@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get '/thankyou', to: 'itinerary#thankyou'
-
   resources :users
   
   resources :main_events  do
