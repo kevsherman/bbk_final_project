@@ -30,7 +30,6 @@ class GuestsController < ApplicationController
     @assignment = Assignment.new
     @assigned_events = @guest.sub_events
     @unassigned_events = SubEvent.where.not(id: @guest.sub_event_ids).where(main_event_id: @main_event)
-    # binding.pry
   end
 
   def edit

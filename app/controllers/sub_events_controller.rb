@@ -24,13 +24,18 @@ class SubEventsController < ApplicationController
 
   def show
     #remove
-    @main_event = MainEvent.where(user_id: session[:user_id])
+    @main_event = MainEvent.where(user_id: session[:user_id]).first
     # @sub_event = current_main_event.sub_event.find(params[:id])
     @sub_event = SubEvent.find(params[:id])
     # in view current_main_event.guests
     @guests = Guest.where(main_event_id: params[:main_event_id]).order(:last)
     @guestlist = @sub_event.guests.sort_by &:last
     @assignment = Assignment.new
+
+    ### chart logic ###
+    @nil_count = Assignment.where(sub_event_id: @sub_event).where(rsvp: "no_response").count
+    @false_count = Assignment.where(sub_event_id: @sub_event).where(rsvp: "false").count
+    @true_count = Assignment.where(sub_event_id: @sub_event).where(rsvp: "true").count
   end
 
   def edit

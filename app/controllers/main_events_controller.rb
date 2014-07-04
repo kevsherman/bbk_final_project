@@ -8,6 +8,7 @@ class MainEventsController < ApplicationController
     # remove and create soonest scope on the subevents model
     @sub_events = SubEvent.where(main_event_id: params[:id]).order(:date).order(:start_time)
 
+    ### Chart Logic ###
     @true_counts = Hash.new(0)
     @false_counts = Hash.new(0)
     @nil_counts = Hash.new(0)
