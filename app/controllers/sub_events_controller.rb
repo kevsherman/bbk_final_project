@@ -28,7 +28,8 @@ class SubEventsController < ApplicationController
     # @sub_event = current_main_event.sub_event.find(params[:id])
     @sub_event = SubEvent.find(params[:id])
     # in view current_main_event.guests
-    @guests = Guest.where(main_event_id: params[:main_event_id])
+    @guests = Guest.where(main_event_id: params[:main_event_id]).order(:last)
+    @guestlist = @sub_event.guests.sort_by &:last
     @assignment = Assignment.new
   end
 

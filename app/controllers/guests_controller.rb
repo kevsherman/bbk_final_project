@@ -3,7 +3,7 @@ class GuestsController < ApplicationController
     
   def index
     @main_event = MainEvent.where(user_id: session[:user_id]).first
-    @guests = @main_event.guests 
+    @guests = @main_event.guests.sort_by &:last
   end
 
   def create
