@@ -20,7 +20,7 @@
       <div id="myModal" class="reveal-modal" data-reveal>
         <%= form_for [@main_event.first, @sub_event, @assignment] do |f| %>
           <%= fields_for(@assignment) do |assign| %>
-            <%= collection_select(:assignment, :guest_id, @guests, :id, :first, {}, {multiple: true, style:'height:100px'}) %>
+            <%= collection_select(:assignment, :guest_id, @guests, :id, :full_name , {}, {multiple: true, style:'height:100px'}) %>
           <% end %>
           <%= f.hidden_field :registration_type, value: "from_sub_event_show" %>
           <%= f.submit "Register Guests" %>
@@ -33,8 +33,8 @@
 </div>
 
 <div class="row">
-  <% @sub_event.guests.each_with_index do |guest, index| %>
-    <a href="#" data-reveal-id="guestModal<%=index%>"> <h5><strong><%= guest.first %> <%= guest.last %></strong> - <%= guest.email %><%= guest.assignment.where(sub_event_id: @sub_event).first.rsvp %></h5></a>
+  <% @guestlist.each_with_index do |guest, index| %>
+    <a href="#" data-reveal-id="guestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %> </strong> - <%= guest.email %><%= guest.assignment.where(sub_event_id: @sub_event).first.rsvp %></h5></a>
    
     <div id="guestModal<%=index%>" class="reveal-modal" data-reveal>
      <div class="row">

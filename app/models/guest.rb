@@ -8,4 +8,7 @@ class Guest < ActiveRecord::Base
   validates_presence_of :main_event_id, :email, :first, :last 
   validates :email, format: {with: VALID_EMAIL_REGEX }
 
+  def full_name
+    "#{last}, #{first}"
+  end
 end
