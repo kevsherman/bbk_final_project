@@ -40,7 +40,8 @@ User.all.each do |user|
       title: Faker::Lorem.sentence,
       description: Faker::Lorem.sentence,
       bride_full_name: Faker::Name.name,
-      groom_full_name: Faker::Name.name
+      groom_full_name: Faker::Name.name,
+      rsvp_sent: [true, false][i%2]
       )
     puts "created main event" if mainevent.valid?
   end
@@ -75,5 +76,20 @@ MainEvent.all.each do |mainevent|
       last: Faker::Name.last_name
     )
     puts "created guest" if guest.valid?
+  end
+end
+
+#create assignments
+
+SubEvent.all.each do |sub_event|
+  Guest.all.each do |guest|
+    1.times do |i|
+      assignment = Assignment.create(
+        sub_event_id: sub_event.id,
+        guest_id: guest.id,
+        rsvp: ["true", "false", "no_response"].sample
+        )
+    puts "created assignment" if assignment.valid?
+    end
   end
 end
