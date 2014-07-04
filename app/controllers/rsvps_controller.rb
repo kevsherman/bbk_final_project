@@ -2,6 +2,7 @@ class RsvpsController < ApplicationController
 
   def index
     @sub_events = SubEvent.where(main_event_id: params[:main_event_id])
+    @main_event = MainEvent.find(params[:main_event_id])
   end
 
   def create
