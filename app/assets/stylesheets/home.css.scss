@@ -7,9 +7,9 @@ h1#logo-font {
   font-size: 36px;
 }
 
-// #drop {
-//   z-index: 2;
-// }
+#drop {
+  z-index: 2;
+}
 
 // .autoplay {
 //   position: relative;
@@ -26,6 +26,12 @@ h1#logo-font {
   width: 100%;
   height: 90%;
   position: relative;
+}
+
+.button-group {
+  z-index: 1;
+  position: absolute;
+  float: right;
 }
 
 #text-1 {
