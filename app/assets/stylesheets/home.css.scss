@@ -11,17 +11,6 @@ h1#logo-font {
   z-index: 2;
 }
 
-// .autoplay {
-//   position: relative;
-//   z-index: 1;
-// }
-
-// .autoplay img {
-//   width: 100%;
-//   height: 90%;
-//   position: relative;
-// }
-
 .landing img {
   width: 100%;
   height: 90%;
@@ -31,7 +20,6 @@ h1#logo-font {
 .button-group {
   z-index: 1;
   position: absolute;
-  float: right;
 }
 
 #text-1 {
@@ -41,6 +29,7 @@ h1#logo-font {
   position: absolute;
   bottom: 60%;
   left: 31%;
+  background-size: 100%;
   color: white;
   text-shadow:
     -1px -1px 0 #000,
@@ -52,26 +41,27 @@ h1#logo-font {
 #text-2 {
   font-family: 'Proxima Nova Light';
   font-size: 4em;
-  text-align: center;
+  float: left;
   position: absolute;
-  bottom: 15%;
-  left: 35%;
+  bottom: 46%;
+  left: 12%;
+  background-size: 100%;
   color: white;
   text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;  
-
 }
 
 #text-3 {
   font-family: 'Proxima Nova Light';
   font-size: 4em;
-  text-align: center;
+  float: left;
   position: absolute;
-  bottom: 5%;
-  left: 15%;
+  bottom: 25%;
+  left: 12%;
+  background-size: 100%;
   color: white;
   text-shadow:
     -1px -1px 0 #000,
