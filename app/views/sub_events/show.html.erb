@@ -5,10 +5,19 @@
     <h4><%= @sub_event.date.to_s(:long) %></h4>
     <h4>From <%= @sub_event.start_time.to_s(:time) %> to <%= @sub_event.end_time.to_s(:time) %></h4>
   </div>
+  <div class="large-4 columns">
+    pie chart goes here
+  </div>
+</div>
+
+<div class="row">
   <div class="large-2 columns"><%= button_to "Edit Event", edit_main_event_sub_event_path(@main_event.first, @sub_event), class: "button", method: "get"%>
+  </div>
   <div class="large-2 columns">
   <%= button_to "Delete Event", main_event_sub_event_path(@main_event.first, @sub_event), class: "button", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
   </div> 
+  <div class="large-8 columns"></div>
+  <hr/>
 </div>
 
 <div class="row">
@@ -20,7 +29,7 @@
       <div id="myModal" class="reveal-modal" data-reveal>
         <%= form_for [@main_event.first, @sub_event, @assignment] do |f| %>
           <%= fields_for(@assignment) do |assign| %>
-            <%= collection_select(:assignment, :guest_id, @guests, :id, :last,  {}, {multiple: true, style:'height:100px'}) %>
+            <%= collection_select(:assignment, :guest_id, @guests, :id, :full_name,  {}, {multiple: true, style:'height:100px'}) %>
           <% end %>
           <%= f.hidden_field :registration_type, value: "from_sub_event_show" %>
           <%= f.submit "Register Guests" %>
@@ -28,15 +37,15 @@
         <a class="close-reveal-modal">&#215;</a>
       </div>
   </div>
+ 
   <div class="large-4 columns"></div>
   <div class="large-2 columns"></div>
 </div>
 
 <div class="row">
-  <% @sub_event.guests.each_with_index do |guest, index| %>
+  <% @guestlist.each_with_index do |guest, index| %>
     <a href="#" data-reveal-id="guestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %></strong> 
     <%if @main_event.first.rsvp_sent == true%>
-
       <%= guest.assignment.where(sub_event_id: @sub_event).first.rsvp %></h5></a>
     <%end%>  
    
@@ -52,7 +61,6 @@
         <%= button_to "Full Guest Details", main_event_guest_path(@main_event.first , guest), class: "button", :method => "get" %>
        <a class="close-reveal-modal">x</a>
       </div>
-
      </div>
     </div>  
 
