@@ -1,11 +1,12 @@
+<div class="row top"></div>
+
 <div class="row panel">
- 
-    <div class="large-9 large-offset-1 columns top">
+    <div class="large-9 large-offset-1 columns">
       <h1> <%= @main_event.title   %>! </h1> 
       <h3> <%= @main_event.description %> </h3>   
     </div> 
     <div class="large-2 columns">
-    <%= button_to "Edit", edit_main_event_path(@main_event), class: "button", :method => "get" %>
+    <%= button_to "Edit", edit_main_event_path(@main_event), class: "edit_button button", :method => "get" %>
       
     </div>
 </div>
