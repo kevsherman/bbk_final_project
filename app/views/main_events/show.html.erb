@@ -44,7 +44,11 @@
                   chart:{
                     type: 'bar',
                     spacing: [0,0,0,0],
-                    margin: [0,0,0,0]
+                    margin: [0,0,0,0],
+                    height: 47
+                  },
+                  credits:{
+                    enabled: false
                   },
                   title:{
                     text: null
@@ -56,6 +60,7 @@
                       enabled:false
                     },
                      title:{
+                      text: null,
                       enabled:false
                     }
                   },
@@ -70,7 +75,8 @@
                     minorGridLineWidth: 0,
                     lineColor: 'transparent',
                     title:{
-                      enabled:false
+                      enabled:false,
+                      text: null
                     }
                   },
                   plotOptions:{
@@ -85,15 +91,15 @@
                   series:[{
                     name: 'No Response',
                     data: [<%=@nil_counts[sub_event.id]%>],
-                    color: '#A3A3A3'
+                    color: '#8D8DAD'
                   },{
                     name: 'Declined',
                     data: [<%=@false_counts[sub_event.id]%>],
-                    color: '#FF0000'
+                    color: '#B22613'
                   },{
                     name: 'Attending',
                     data: [<%=@true_counts[sub_event.id]%>],
-                    color: '#00FF00'
+                    color: '#13B265'
                   }]
                   });
                 });
