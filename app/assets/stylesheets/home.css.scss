@@ -2,15 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1#logo-font {
-  font-family: 'Satisfy', cursive;
-  font-size: 36px;
-}
-
-#drop {
-  z-index: 2;
-}
-
 .landing img {
   width: 100%;
   height: auto;
@@ -36,7 +27,7 @@ h1#logo-font {
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
-    1px 1px 0 #000;  
+    1px 1px 0 #000;
 }
 
 #text-2 {
@@ -52,7 +43,11 @@ h1#logo-font {
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
-    1px 1px 0 #000;  
+    1px 1px 0 #000;
+  letter-spacing: -1px;  
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px; 
 }
 
 #text-3 {
@@ -69,6 +64,10 @@ h1#logo-font {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;  
+  letter-spacing: -1px;  
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px; 
 }
 
 .product-details {
@@ -78,4 +77,8 @@ h1#logo-font {
 
 .product-details p {
   text-align: left;
+}
+
+.landing span {
+
 }
