@@ -28,14 +28,15 @@ class SubEventsController < ApplicationController
     # @sub_event = current_main_event.sub_event.find(params[:id])
     @sub_event = SubEvent.find(params[:id])
     # in view current_main_event.guests
-    @guests = Guest.where(main_event_id: params[:main_event_id]).order(:last)
-    @guestlist = @sub_event.guests.sort_by &:last
     @assignment = Assignment.new
 
-    ### chart logic ###
-    @nil_count = Assignment.where(sub_event_id: @sub_event).where(rsvp: "no_response").count
-    @false_count = Assignment.where(sub_event_id: @sub_event).where(rsvp: "false").count
-    @true_count = Assignment.where(sub_event_id: @sub_event).where(rsvp: "true").count
+    ### guest logic ###
+    @guests = Guest.where(main_event_id: params[:main_event_id]).order(:last)
+    @guestlist = @sub_event.guests.sort_by &:last
+
+    @no_response = Assignment.where(sub_event_id: @sub_event).where(rsvp: "no_response")
+    @declined = Assignment.where(sub_event_id: @sub_event).where(rsvp: "false")
+    @attending = Assignment.where(sub_event_id: @sub_event).where(rsvp: "true")
   end
 
   def edit
@@ -59,6 +60,15 @@ class SubEventsController < ApplicationController
     @sub_event.destroy
     redirect_to main_event_path(params[:main_event_id])
   end
+
+  def sorted_guests(assignments)
+    sorted_list = []
+    assignments.each do |assignment|
+      sorted_list << assignment.guest
+    end
+    sorted_list.sort_by &:last
+  end
+  helper_method :sorted_guests
 
   protected
 
