@@ -1,3 +1,4 @@
+
 <div class="row top"></div>
 
 <div class="row panel">
@@ -75,11 +76,11 @@
   <!-- List each guest as modal  --> 
   <!-- If RSVP's are sent, render them in categories --> 
   <%if @main_event.rsvp_sent == true%>
-  <%= render 'guest_rsvps' %>
+    <%= render 'guest_rsvps' %>
 
   <!-- else, just list each guest currently attending -->
   <%else%>
-  <%= render 'guest_modal' %>
+    <%= render 'guest_modal' %>
   <%end%>
 </div>
 

@@ -1,29 +1,51 @@
 <% if @attending.count > 0 %>
-  <h3>Confirmed Attending</h3>
+  <table class="large-4 columns">
+    <thead>
+      <tr>
+        <th>Confirmed Attending</th>
+      </tr>
+    </thead>
   <% sorted_guests(@attending).each_with_index do|guest, index| %>
-    <a href="#" data-reveal-id="attendingGuestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %></strong></h5></a>
-    <div id="attendingGuestModal<%=index%>" class="reveal-modal" data-reveal>
-     <div class="row">
-      <div class="large-4 columns">
-        <%= guest.last %>, <%= guest.first %> 
-      </div>
-      <div class="large-4 columns">
-       <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event, guest), class: "button",  :method => "delete" %>
-      </div>
-      <div class="large-4 columns">
-        <%= button_to "Full Guest Details", main_event_guest_path(@main_event, guest), class: "button", :method => "get" %>
-      </div>
-       <a class="close-reveal-modal">x</a>
-     </div>
-    </div>  
-   <hr/>  
+    <tbody>
+      <tr>
+        <td>
+          <a href="#" data-reveal-id="attendingGuestModal<%=index%>"> <strong><%= guest.last %>, <%= guest.first %></strong></a>
+        </td>
+      </tr>
+          <div id="attendingGuestModal<%=index%>" class="reveal-modal" data-reveal>
+        
+         <div class="row">
+          <div class="large-4 columns">
+            <%= guest.last %>, <%= guest.first %> 
+          </div>
+          <div class="large-4 columns">
+           <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event, guest), class: "button",  :method => "delete" %>
+          </div>
+          <div class="large-4 columns">
+            <%= button_to "Full Guest Details", main_event_guest_path(@main_event, guest), class: "button", :method => "get" %>
+          </div>
+           <a class="close-reveal-modal">x</a>
+         </div>
+        </div>  
+    </tbody>
   <%end%> 
 <%end%>
+</table> 
 
 <% if @declined.count > 0 %>
-  <h3>Regretfully Declined</h3>
+  <table class="large-4 columns">
+    <thead>
+      <tr>
+        <th>Regretfully Declined</th>
+      </tr>
+    </thead>
   <% sorted_guests(@declined).each_with_index do|guest, index| %>
-    <a href="#" data-reveal-id="declinedGuestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %></strong></h5></a>
+    <tbody>
+      <tr>
+        <td>
+          <a href="#" data-reveal-id="declinedGuestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %></strong></h5></a>
+        </td>
+      </tr>
     <div id="declinedGuestModal<%=index%>" class="reveal-modal" data-reveal>
      <div class="row">
       <div class="large-4 columns">
@@ -38,14 +60,25 @@
        <a class="close-reveal-modal">x</a>
      </div>
     </div>  
-   <hr/>  
+  </tbody>
   <%end%> 
 <%end%>
+</table>
 
 <% if @no_response.count > 0 %>
-  <h3>Unconfimed</h3>
+  <table class="large-4 columns">
+    <thead>
+      <tr>
+        <th>Unconfirmed</th>
+      </tr>
+    </thead>
   <% sorted_guests(@no_response).each_with_index do|guest, index| %>
-    <a href="#" data-reveal-id="unconfirmedGuestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %></strong></h5></a>
+    <tbody>
+      <tr>
+        <td>
+          <a href="#" data-reveal-id="unconfirmedGuestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %></strong></h5></a>
+        </td>
+      </tr>
     <div id="unconfirmedGuestModal<%=index%>" class="reveal-modal" data-reveal>
      <div class="row">
       <div class="large-4 columns">
@@ -60,8 +93,11 @@
        <a class="close-reveal-modal">x</a>
      </div>
     </div>  
-   <hr/>  
+   </tbody>
   <%end%> 
 <%end%>
+</table>
+
+
 
 
