@@ -2078,7 +2078,8 @@ meta.foundation-mq-topbar {
     color: #eeeeee;
     font-weight: normal;
     font-size: 1rem;
-    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+    font-family: "Lato";
+  /*font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/ }
   .pricing-table .price {
     background-color: #f6f6f6;
     padding: 0.9375rem 1.25rem;
@@ -2086,7 +2087,8 @@ meta.foundation-mq-topbar {
     color: #333333;
     font-weight: normal;
     font-size: 2rem;
-    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+    font-family: "Lato";
+  /*font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/ }
   .pricing-table .description {
     background-color: white;
     padding: 0.9375rem;
@@ -2908,7 +2910,8 @@ blockquote p {
       background: #efefef;
       color: #222222;
       padding: 1rem 2rem;
-      font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+      font-family: "Lato";
+    /*font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/
       font-size: 1rem; }
       .tabs dd > a:hover, .tabs .tab-title > a:hover {
         background: #e1e1e1; }
@@ -3010,7 +3013,8 @@ ul.pagination {
   padding: 0.875rem 0;
   list-style-type: none;
   list-style-position: outside;
-  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+  font-family: "Lato";
+  /*font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/ }
   .side-nav li {
     margin: 0 0 0.4375rem 0;
     font-size: 0.875rem; }
@@ -3025,7 +3029,8 @@ ul.pagination {
     .side-nav li.active > a:first-child:not(.button) {
       color: #1cc7ff;
       font-weight: normal;
-      font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+      font-family: "Lato";
+      /*font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/ }
     .side-nav li.divider {
       border-top: 1px solid;
       height: 0;
@@ -3083,7 +3088,8 @@ ul.pagination {
       color: #222222;
       padding: 1rem;
       display: block;
-      font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+      font-family: "Lato";
+      /*font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/
       font-size: 1rem; }
       .accordion .accordion-navigation > a:hover, .accordion dd > a:hover {
         background: #e3e3e3; }
@@ -3568,7 +3574,8 @@ dialog[open] {
     display: inline;
     margin-left: 1rem;
     margin-bottom: 0.625rem;
-    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-family: "Lato";
+  /*font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/
     font-weight: normal;
     font-size: 0.875rem;
     color: #999999; }
@@ -3750,7 +3757,8 @@ dialog[open] {
       right: auto; } }
 .label {
   font-weight: normal;
-  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-family: "Lato";
+  /*font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/
   text-align: center;
   text-decoration: none;
   line-height: 1;
