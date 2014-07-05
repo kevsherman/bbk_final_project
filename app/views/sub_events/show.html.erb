@@ -1,9 +1,20 @@
-<div class="row">
+<div class="row top"></div>
+
+<div class="row panel">
   <div class="large-6 columns">
     <h1><%= @sub_event.title %></h1>
     <h4><%= @sub_event.description %></h4>
     <h4><%= @sub_event.date.to_s(:long) %></h4>
     <h4>From <%= @sub_event.start_time.to_s(:time) %> to <%= @sub_event.end_time.to_s(:time) %></h4>
+    
+    <div class="row">
+      <div class="large-6 columns">
+        <%= button_to "Edit Event", edit_main_event_sub_event_path(@main_event, @sub_event), class: "button", method: "get"%>
+      </div>
+      <div class="large-6 columns">
+        <%= button_to "Delete Event", main_event_sub_event_path(@main_event, @sub_event), class: "button", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
+      </div>
+    </div> 
   </div>
   <div class="large-6 columns">
      <!-- if rsvps were sent, render response stats  -->
@@ -34,16 +45,6 @@
             </script>
         <%end%>
   </div>
-</div>
-
-<div class="row">
-  <div class="large-2 columns"><%= button_to "Edit Event", edit_main_event_sub_event_path(@main_event, @sub_event), class: "button", method: "get"%>
-  </div>
-  <div class="large-2 columns">
-  <%= button_to "Delete Event", main_event_sub_event_path(@main_event, @sub_event), class: "button", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
-  </div> 
-  <div class="large-8 columns"></div>
-  <hr/>
 </div>
 
 <div class="row">
