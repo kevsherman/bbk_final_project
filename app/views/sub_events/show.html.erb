@@ -33,6 +33,9 @@
                 title:{
                   text: null
                 },
+                credits:{
+                  enabled:false
+                },
                 series: [{
                   type: 'pie',
                   data: [ 
@@ -49,12 +52,12 @@
 </div>
 
 <div class="row">
-  <div class="large-4 columns">
+  <div class="large-9 columns">
     <h3><strong>Guests for this Event</strong></h3>
   </div>
 
   <!-- Register Guests Button/Modal -->
-  <div class="large-2 columns">  
+  <div class="large-3 columns">  
     <a href="#" class= "button" data-reveal-id="myModal">Register Guests</a>
       <div id="myModal" class="reveal-modal" data-reveal>
         <%= form_for [@main_event, @sub_event, @assignment] do |f| %>
@@ -67,9 +70,6 @@
         <a class="close-reveal-modal">&#215;</a>
       </div>
   </div>
- 
-  <div class="large-4 columns"></div>
-  <div class="large-2 columns"></div>
 </div>
 
 <div class="row">
