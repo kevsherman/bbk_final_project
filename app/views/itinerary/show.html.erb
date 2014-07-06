@@ -1,31 +1,27 @@
-<style>
-  .columns{
-    border:1px solid black;
-  }
-</style>
+
 <% if @guest.sub_events.first == nil%>
 
 <div class="row">
-  <div class="large-10 columns">
+  <div class="large-6 columns"></div>
+  <div class="large-6 columns">
     <h1><%= @guest.first %> <%= @guest.last %></h1>
-    <h5>You've been invited to: NOTHING LOSER</h5>
-  </div>
-  <div class="large-2 columns">
+    <h5>You haven't received any invites yet. </h5>
   </div>
 </div>
+
 <% elsif %>
-<div class="row">
-  <div class="large-10 columns">
+<div class="row panel">  
+  <div class="large-4 columns"></div>
+  <div class="large-8 columns">
     <h1><%= @guest.first %> <%= @guest.last %></h1>
     <h5>You've been invited to:</h5>
   </div>
-  <div class="large-2 columns">
-  </div>
+  
 </div>
 
 
 
-<div class="row">
+<div class="row panel">
       
 <%= form_for [@main_event, @guest.sub_events.first, @assignment] do |f| %>     
 
@@ -50,7 +46,7 @@
     <%end%>
 <%= f.hidden_field :guest_id, value: params[:id] %>    
 <%= f.hidden_field :registration_type, value: "from_guest_rsvp" %>
-<%= f.submit "submit rsvp" %>
+<%= f.submit "submit rsvp", class: "center_button" %>
 <% end %>
 
 </div>
