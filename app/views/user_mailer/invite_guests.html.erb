@@ -1,18 +1,12 @@
-  
-
 <body style="background-color: #F2DEDE;">
-<h1 class="header" style="margin-top: 100px;text-align: center;font-size: 30px;font-family: cursive;"><%= @main_event.bride_full_name%> & <%= @main_event.groom_full_name%></h1>
+<p style="text-align: center;font-size: 20px;font-family: cursive;">Dear <%= @guest.first %>, </p>
 
-<p style="text-align: center;font-size: 20px;font-family: cursive;"> request the pleasure of the company of </p>
-<p style="text-align: center;font-size: 20px;font-family: cursive;"><%= @guest.first %> </p>
+<h1 class="header" style="text-align: center;font-size: 30px;font-family: cursive;"><%= @main_event.bride_full_name%> & <%= @main_event.groom_full_name%></h1>
 
+<p style="text-align: center;font-size: 20px;font-family: cursive;"> request the honor of your presence </p>
 
+<p style="text-align: center;font-size: 20px;font-family: cursive;"> to celebrate their marriage </p>
 
-<p style="text-align: center;font-size: 20px;font-family: cursive;"> to celebrate thier marriage </p>
-
-<p style="text-align: center;font-size: 20px;font-family: cursive;"> Please follow this link to rsvp</p>
-<p style="text-align: center;font-size: 20px;font-family: cursive;"><a href="http://arcane-citadel-4179.herokuapp.com/itinerary/<%= @guest.id %>">blacktie something or other</a></p>
-
-
+<p style="text-align: center;font-size: 20px;font-family: cursive;"> Please follow <a href="http://black-tie.herokuapp.com/itinerary/<%= @guest.id %>">this link</a> to RSVP</p>
 
 </body>

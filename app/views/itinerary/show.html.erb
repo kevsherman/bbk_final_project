@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <% if @guest.sub_events.first == nil%>
 
@@ -6,10 +7,19 @@
   <div class="large-6 columns">
     <h1><%= @guest.first %> <%= @guest.last %></h1>
     <h5>You haven't received any invites yet. </h5>
+=======
+<% if @guest.sub_events.first == nil%>
+<div class="row panel">
+  <div class="large-10 columns">
+    <h1><%= @guest.first %> <%= @guest.last %></h1><hr/>
+    <h5>You haven't been chosen for any specific events at <%= @main_event.title %></h5>
+>>>>>>> a5bdae08f32d18f65041d7f62a15eb82eb5cba68
   </div>
+  <div class="large-2 columns"></div>
 </div>
 
 <% elsif %>
+<<<<<<< HEAD
 <div class="row panel">  
   <div class="large-4 columns"></div>
   <div class="large-8 columns">
@@ -49,5 +59,61 @@
 <%= f.submit "submit rsvp", class: "center_button" %>
 <% end %>
 
+=======
+<div class="row panel">
+  <div class="large-10 columns">
+    <h1><%= @guest.first %> <%= @guest.last %></h1><hr/>
+    <h3>We would be honored if you joined us at <%= @main_event.title %></h3>
+    <h3>Please RSVP for the following events:</h3>
+  </div>
+  <div class="large-2 columns"></div>
 </div>
+
+<div class="row">    
+  <%= form_for [@main_event, @guest.sub_events.first, @assignment] do |f| %>     
+    <% @guest.sub_events.each do |sub_event| %>
+      <div class="large-8 columns">
+        <table>
+          <thead>
+            <tr>
+              <th><strong><h4><%= sub_event.title %></h4></strong></th>
+              <th style="padding-top:20px;"><%= radio_button_tag("subEventId[#{sub_event.id.to_s}]", "true") %>
+                 <%= label_tag(:rsvp_true, "Attending") %>
+              </th>
+              <th style="padding-top:20px;"><%= radio_button_tag("subEventId[#{sub_event.id.to_s}]", "false") %>
+                  <%= label_tag(:rsvp_false, "Regretfully Decline") %>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><h6><%= sub_event.description %> </h6></td>
+            </tr>
+            <tr>
+              <td><h6><%= sub_event.date.to_s(:long) %> at <%= sub_event.start_time.to_s(:time)%>asdfjow;eifja;oweijfa;woeifja;owefij</h6></td>
+            </tr>
+            <tr>
+              <td><h6><%= sub_event.location %> </h6></td>
+            </tr>
+            <tr>  
+              <td><h6> Dress: <%= sub_event.attire %> </h6></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="large-4 columns">
+         
+      </div>    
+       <hr/>   
+      <%end%>
+  <%= f.hidden_field :guest_id, value: params[:id] %>    
+  <%= f.hidden_field :registration_type, value: "from_guest_rsvp" %>
+</div>
+<div class="row">
+  <div class="large-2 large-centered columns">
+    <%= f.submit "submit rsvp", class: 'button' %>
+  </div>
+>>>>>>> a5bdae08f32d18f65041d7f62a15eb82eb5cba68
+</div>
+<% end %>
 <% end %>
