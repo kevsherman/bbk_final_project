@@ -6,8 +6,6 @@ class SubEvent < ActiveRecord::Base
   validates_presence_of :main_event_id, :title, :location, :date, :start_time, :end_time
   validates_numericality_of :main_event_id, { only_integer: true}
 
-  
-
   def full_name
     "#{last}, #{first}"
   end
