@@ -2,7 +2,7 @@
   <table class="large-4 columns">
     <thead>
       <tr>
-        <th>Confirmed Attending</th>
+        <th style="color: #13B265; text-align:center;">Confirmed Attending</th>
       </tr>
     </thead>
   <% sorted_guests(@attending).each_with_index do|guest, index| %>
@@ -36,7 +36,7 @@
   <table class="large-4 columns">
     <thead>
       <tr>
-        <th>Regretfully Declined</th>
+        <th style="color: #B22613; text-align:center;">Regretfully Declined</th>
       </tr>
     </thead>
   <% sorted_guests(@declined).each_with_index do|guest, index| %>
@@ -69,7 +69,7 @@
   <table class="large-4 columns">
     <thead>
       <tr>
-        <th>Unconfirmed</th>
+        <th style="color: #8D8DAD; text-align:center;">Unconfirmed</th>
       </tr>
     </thead>
   <% sorted_guests(@no_response).each_with_index do|guest, index| %>

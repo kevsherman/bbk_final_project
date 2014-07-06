@@ -15,6 +15,4 @@
  *= require_tree .
  *= require_self
  *= require normalize
- *= require foundation-datepicker
-
  */
