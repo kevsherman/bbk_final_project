@@ -1,0 +1,19 @@
+<% @guestlist.each_with_index do |guest, index| %>
+    <a href="#" data-reveal-id="guestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %></strong></h5></a>
+    <div id="guestModal<%=index%>" class="reveal-modal" data-reveal>
+     <div class="row">
+      <div class="large-4 columns">
+        <%= guest.last %>, <%= guest.first %> 
+      </div>
+      <div class="large-4 columns">
+       <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event, guest), class: "button",  :method => "delete" %>
+      </div>
+      <div class="large-4 columns">
+        <%= button_to "Full Guest Details", main_event_guest_path(@main_event, guest), class: "button", :method => "get" %>
+       <a class="close-reveal-modal">x</a>
+      </div>
+     </div>
+    </div>  
+
+   <hr/>   
+<%end%>

@@ -1,3 +1,4 @@
+
 <div class="row top"></div>
 
 <div class="row panel">
@@ -9,12 +10,12 @@
     
     <div class="row">
       <div class="large-6 columns">
-        <%= button_to "Edit Event", edit_main_event_sub_event_path(@main_event, @sub_event), class: "button", method: "get"%>
+        <%= button_to "Edit Event", edit_main_event_sub_event_path(@main_event, @sub_event), class: "panel_button button", method: "get"%>
       </div>
       <div class="large-6 columns">
-        <%= button_to "Delete Event", main_event_sub_event_path(@main_event, @sub_event), class: "button", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
+        <%= button_to "Delete Event", main_event_sub_event_path(@main_event, @sub_event), class: "panel_button button", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
       </div>
-    </div> 
+      </div>
   </div>
   <div class="large-6 columns">
      <!-- if rsvps were sent, render response stats  -->
@@ -32,12 +33,15 @@
                 title:{
                   text: null
                 },
+                credits:{
+                  enabled:false
+                },
                 series: [{
                   type: 'pie',
                   data: [ 
-                      {name:'No Response', y: <%=@nil_count%>, color: 'gray'},
-                      {name:'Attending', y: <%=@true_count%>, color: 'green'},
-                      {name:'Declined', y: <%=@false_count%>, color: 'red'}
+                      {name:'No Response', y: <%=@no_response.count%>, color: '#8D8DAD'},
+                      {name:'Attending', y: <%=@attending.count%>, color: '#13B265'},
+                      {name:'Declined', y: <%=@declined.count%>, color: '#B22613'}
                       ]
                  }]
                 });
@@ -48,10 +52,12 @@
 </div>
 
 <div class="row">
-  <div class="large-4 columns">
+  <div class="large-9 columns">
     <h3><strong>Guests for this Event</strong></h3>
   </div>
-  <div class="large-2 columns">  
+
+  <!-- Register Guests Button/Modal -->
+  <div class="large-3 columns">  
     <a href="#" class= "button" data-reveal-id="myModal">Register Guests</a>
       <div id="myModal" class="reveal-modal" data-reveal>
         <%= form_for [@main_event, @sub_event, @assignment] do |f| %>
@@ -64,33 +70,35 @@
         <a class="close-reveal-modal">&#215;</a>
       </div>
   </div>
- 
-  <div class="large-4 columns"></div>
-  <div class="large-2 columns"></div>
 </div>
 
 <div class="row">
-  <% @guestlist.each_with_index do |guest, index| %>
-    <a href="#" data-reveal-id="guestModal<%=index%>"> <h5><strong><%= guest.last %>, <%= guest.first %></strong> 
-    <%if @main_event.rsvp_sent == true%>
-      <%= guest.assignment.where(sub_event_id: @sub_event).first.rsvp %></h5></a>
-    <%end%>  
-   
-    <div id="guestModal<%=index%>" class="reveal-modal" data-reveal>
-     <div class="row">
-      <div class="large-4 columns">
-        <%= guest.last %>, <%= guest.first %> 
-      </div>
-      <div class="large-4 columns">
-       <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event, guest), class: "button",  :method => "delete" %>
-      </div>
-      <div class="large-4 columns">
-        <%= button_to "Full Guest Details", main_event_guest_path(@main_event, guest), class: "button", :method => "get" %>
-       <a class="close-reveal-modal">x</a>
-      </div>
-     </div>
-    </div>  
+  <!-- List each guest as modal  --> 
+  <!-- If RSVP's are sent, render them in categories --> 
+  <%if @main_event.rsvp_sent == true%>
+    <%= render 'guest_rsvps' %>
 
-     <hr/>   
+  <!-- else, just list each guest currently attending -->
+  <%else%>
+    <%= render 'guest_modal' %>
   <%end%>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,13 +1,12 @@
 <div class="row top"></div>
 
 <div class="row panel">
-  <div class="large-9 large-offset-1 columns">
+  <div class="large-6 large-offset-1 columns">
     <h1> <%=@guest.first%> <%=@guest.last%></h1>
     <h5> <%=@guest.email%></h5>
   </div>
-  
-  <div class="Large-2 columns">
-  <a href="#" class="button" data-reveal-id="subEventModal">Add Guest to Another Event</a>
+  <div class="large-5 columns">
+  <a href="#" class="add_button button" data-reveal-id="subEventModal">Add Guest to Another Event</a>
     <div id="subEventModal" class="reveal-modal" data-reveal>
       <% @unassigned_events.each do |subEvent| %>
       <div class="row">
@@ -19,7 +18,7 @@
           <% end %>
         </div>
           <div class="large-10 large-offset-1 columns">
-            <div class="title"> <h5><%= subEvent.title %></h5></div>
+            <div class="titled"> <h5><%= subEvent.title %></h5></div>
           </div>
         </div>
       <% end %>
