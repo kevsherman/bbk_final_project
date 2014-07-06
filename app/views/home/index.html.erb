@@ -1,38 +1,44 @@
-<link rel="stylesheet" href="/stylesheets/home.css.scss">
+<div class="row">
+  <div class="large-12 columns">
+    <span>
+        <p id = "text-1">Black Tie</p>
+          <!-- <br>
+        <p id ="text-2">RSVP Management</p>
+          <br>
+        <p id ="text-3">Made Easy</p> -->
+      </span>
+  </div>
+</div>
 
 <div class="row">
-  <ul class="button-group">
-    <li><a href="users/new" class="button">Sign Up</a></li>
-    <li><a href="#" class="button" data-reveal-id="myModal">Log In</a></li>
-        <div id="myModal" class="reveal-modal tiny" data-reveal>
-          <%= form_tag sessions_path do %>
-            <div>
-              <%= label_tag "email" %><br/>
-              <%= text_field_tag "email" %>
-            </div>
-            <div>
-              <%= label_tag :password %><br/>
-              <%= password_field_tag :password %>
-            </div>
-            <div><%= submit_tag "Log In" %></div>
-          <% end %>
-          <a class="close-reveal-modal">&#215;</a>
+  <div class="large-12 columns">
+    <ul class="button-group">
+      <li><a href="users/new" class="button">Sign Up</a></li>
+      <li><a href="#" class="button" data-reveal-id="myModal">Log In</a></li>
+          <div id="myModal" class="reveal-modal tiny" data-reveal>
+            <%= form_tag sessions_path do %>
+              <div>
+                <%= label_tag "email" %><br/>
+                <%= text_field_tag "email" %>
+              </div>
+              <div>
+                <%= label_tag :password %><br/>
+                <%= password_field_tag :password %>
+              </div>
+              <div><%= submit_tag "Log In" %></div>
+            <% end %>
+            <a class="close-reveal-modal">&#215;</a>
+          </div>
         </div>
-      </div>
-  </ul>
+    </ul>
+  </div>
 </div>
 
 <div class="landing">
   <div id = "landing-photo"><img src="/images/london-event-photographer-01.jpg">
-    <span>
-      <p id = "text-1">Black Tie</p>
-        <!-- <br>
-      <p id ="text-2">RSVP Management</p>
-        <br>
-      <p id ="text-3">Made Easy</p> -->
-    </span>
   </div>
 </div>
+
 
 <div id="learn-more">
     <a href="#more" class="click">
