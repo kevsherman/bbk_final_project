@@ -1,18 +1,15 @@
-<h1>RSVP's</h1>
-
-<% if @main_event.rsvp_sent %>
-
-<p> You have invited <%=@main_event.guests.count %> guests</p>
-
-<p> Take a look at the home page to review the details </p>
-
-<% else %>
-  <%= button_to "email rsvps", class: 'button' %>
-
-  <% @sub_events.each do |subEvent| %>
-
-    <h3><%= subEvent.title %> - <%= subEvent.guests.count %> invites pending</h3>
-   <hr/>
-  <% end %>
-
-<%end%>
+<div class="row">
+  <div class="large-6 columns">
+    <h1>RSVP's</h1>
+    <% if @main_event.rsvp_sent %>
+      <p> You have invited <%=@main_event.guests.count %> guests</p>
+      <p> Take a look at the home page to review the details </p>
+    <% else %>
+      <% @sub_events.each do |subEvent| %>
+        <h3><%= subEvent.title %> - <%= subEvent.guests.count %> invites pending</h3>
+        <hr/>
+      <% end %>
+      <%= button_to "email rsvps", '#', class: "button" %>
+    <%end%>
+  </div>
+</div>
