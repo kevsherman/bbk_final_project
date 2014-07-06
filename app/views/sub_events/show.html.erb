@@ -65,7 +65,7 @@
             <%= collection_select(:assignment, :guest_id, @guests, :id, :full_name,  {}, {multiple: true, style:'height:100px'}) %>
           <% end %>
           <%= f.hidden_field :registration_type, value: "from_sub_event_show" %>
-          <%= f.submit "Register Guests" %>
+          <%= f.submit "Register Guests", class: "button" %>
         <% end %>
         <a class="close-reveal-modal">&#215;</a>
       </div>
