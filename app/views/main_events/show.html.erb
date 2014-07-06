@@ -2,9 +2,10 @@
 
 <div class="row panel">
     <div class="large-9 large-offset-1 columns">
-      <h1> <%= @main_event.title   %>! </h1> 
+      <h1> <%= @main_event.title %>! </h1> 
       <h3> <%= @main_event.description %> </h3>   
     </div> 
+    
     <div class="large-2 columns">
     <%= button_to "Edit", edit_main_event_path(@main_event), class: "edit_button button", :method => "get" %>
       
@@ -13,7 +14,7 @@
 
 <div class="row">
   <div class="large-2 columns">
-  <%= button_to "Add Event", new_main_event_sub_event_path(@main_event), class:"button sidebar", method:"get" %>
+  <%= button_to "Add Event", new_main_event_sub_event_path(@main_event), class: "button sidebar", method:"get" %>
  
     <%= button_to "Guest List", main_event_guests_path(@main_event), class: "button sidebar", :method => "get" %>
  

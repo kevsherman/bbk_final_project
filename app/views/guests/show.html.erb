@@ -1,48 +1,52 @@
-<div class="row">
-  <div class="large-2 columns"><%= button_to "Edit This Guest", edit_main_event_guest_path, class: "button", :method => "get" %></div>
-  <div class="large-10 columns"><%= button_to "Delete This Guest", main_event_guest_path, class: "button", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
+<div class="row top"></div>
+
+<div class="row panel">
+  <div class="large-9 large-offset-1 columns">
+    <h1> <%=@guest.first%> <%=@guest.last%></h1>
+    <h5> <%=@guest.email%></h5>
   </div>
-</div>
-
-<div class="row">
-  <h1> <%=@guest.first%> <%=@guest.last%></h1>
-  <h5> <%=@guest.email%></h5>
-  <br/>
-</div>
-
-<div class="row">
-  <div class="large-6 columns">
-    <h3>Invites for <%= @guest.first %> </h3>
-  </div>
-
-  <!-- List unassigned sub_events for guest -->
-  <div class="large-6 columns">
-    <a href="#" data-reveal-id="subEventModal">Add Guest to Another Event</a>
-        <div id="subEventModal" class="reveal-modal" data-reveal>
-          <% @unassigned_events.each do |subEvent| %>
-            <div class="row">
-              <div class="large-1 columns">
-                <%= form_for [@main_event, subEvent, @assignment], html:{ class: "button_to" } do |f| %>
-                  <%= f.hidden_field :registration_type, :value => "other" %>
-                  <%= f.hidden_field :guest_id, :value => @guest.id %>
-                  <%= f.submit "Add", :class => "link" %>
-                  <% end %>
-              </div>
-                <div class="large-11 columns">
-                  <h5><%= subEvent.title %></h5>
-                </div>
-            </div>
+  
+  <div class="Large-2 columns">
+  <a href="#" class="button" data-reveal-id="subEventModal">Add Guest to Another Event</a>
+    <div id="subEventModal" class="reveal-modal" data-reveal>
+      <% @unassigned_events.each do |subEvent| %>
+      <div class="row">
+        <div class="large-1 columns">
+          <%= form_for [@main_event, subEvent, @assignment], html:{ class: "button_to" } do |f| %>
+            <%= f.hidden_field :registration_type, :value => "other" %>
+            <%= f.hidden_field :guest_id, :value => @guest.id %>
+            <%= f.submit "Add", :class => "submit_button button" %>
           <% end %>
         </div>
+          <div class="large-10 large-offset-1 columns">
+            <div class="titled"> <h5><%= subEvent.title %></h5></div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+      
+    </div>
   </div>
 </div>
+<div class="row">
+  <div class="large-6 large-offset-2 columns">
+    <h3>Invites for <%= @guest.first %> </h3>
+  </div>
+</div>  
 
-  <!-- List assigned sub_events for guest -->
-  <div class="row">
+<div class="row">
+  <div class="large-2 columns">
+  <%= button_to "Edit Guest", edit_main_event_guest_path, class: "button sidebar", :method => "get" %>
+
+  <%= button_to "Delete Guest", main_event_guest_path, class: "delete_button button sidebar", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
+  </div>
+
+  <div class="large-10 columns">
     <% @assigned_events.each_with_index do |subEvent, index| %>
       <a href="#" data-reveal-id="subEventModal_2<%=index%>"><h5><%=subEvent.title %></h5></a>
       <div id="subEventModal_2<%=index%>" class="reveal-modal" data-reveal>
-        <div><%= button_to "Remove from #{subEvent.title}", main_event_sub_event_assignment_path(@main_event, subEvent, @guest), class: "button", :method => "delete" %></div>
+        <div><%= button_to "Remove from #{subEvent.title}", main_event_sub_event_assignment_path(@main_event, subEvent, @guest), class: "remove_button button", :method => "delete" %></div>
       </div>
+      <hr/>
     <% end %>
   </div>
