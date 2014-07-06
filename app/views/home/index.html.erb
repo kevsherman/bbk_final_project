@@ -1,44 +1,54 @@
 <link rel="stylesheet" href="/stylesheets/home.css.scss">
 
-<ul class="button-group">
-  <li><a href="users/new" class="button">Sign Up</a></li>
-  <li><a href="#" class="button" data-reveal-id="myModal">Log In</a></li>
-      <div id="myModal" class="reveal-modal tiny" data-reveal>
-        <%= form_tag sessions_path do %>
-          <div>
-            <%= label_tag "email" %><br/>
-            <%= text_field_tag "email" %>
-          </div>
-          <div>
-            <%= label_tag :password %><br/>
-            <%= password_field_tag :password %>
-          </div>
-          <div><%= submit_tag "Log In" %></div>
-        <% end %>
-        <a class="close-reveal-modal">&#215;</a>
+<div class="row">
+  <ul class="button-group">
+    <li><a href="users/new" class="button">Sign Up</a></li>
+    <li><a href="#" class="button" data-reveal-id="myModal">Log In</a></li>
+        <div id="myModal" class="reveal-modal tiny" data-reveal>
+          <%= form_tag sessions_path do %>
+            <div>
+              <%= label_tag "email" %><br/>
+              <%= text_field_tag "email" %>
+            </div>
+            <div>
+              <%= label_tag :password %><br/>
+              <%= password_field_tag :password %>
+            </div>
+            <div><%= submit_tag "Log In" %></div>
+          <% end %>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
       </div>
-    </div>
-</ul>
+  </ul>
+</div>
 
 <div class="landing">
   <div id = "landing-photo"><img src="/images/london-event-photographer-01.jpg">
     <span>
       <p id = "text-1">Black Tie</p>
-        <br>
+        <!-- <br>
       <p id ="text-2">RSVP Management</p>
         <br>
-      <p id ="text-3">Made Easy</p>
+      <p id ="text-3">Made Easy</p> -->
     </span>
   </div>
 </div>
 
 <div id="learn-more">
-    <a href="#el1" class="click"><h4 class="learn-more">Learn More</h4><br>
-      <i class="fa fa-chevron-down"></i></a>
+    <a href="#more" class="click">
+      <!-- <h2 class="learn-more">Learn More</h2> -->
+        <i class="fa fa-chevron-down"></i></a>
 </div>
 
 <div class="row">
- <div id = "el1">
+  <div id = "made-easy">
+    <strong><h1>RSVP Management, Made Easy.</h1></strong>
+    <hr/>
+  </div>
+</div>
+
+<div class="row">
+ <div id = "more">
     <div class="large-3 columns">
       <i class="fa fa-umbrella fa-5x"></i>
       <h4>Host Multiple Events Under One Umbrella</h4>
@@ -65,11 +75,39 @@
   </div>
 </div>
 
-
-
-<footer>
-  <!-- This will display "Logged Out" notice after Log Out -->
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value) %>
-  <% end %>
-</footer>
+<div class="row">
+    <div class="large-12 columns">
+    
+      <div class="panel">
+        <h4>Questions?</h4>
+            
+        <div class="row">
+          <div class="large-9 columns">
+            <p>Get in touch. We'd love to hear from you!</p>
+          </div>
+          <div class="large-3 columns">
+            <a href="#" class="radius button right">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Copyright BBK Final Projects, May 2014.</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> 
+  </footer>
+    
