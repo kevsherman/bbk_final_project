@@ -28,7 +28,7 @@
           <h5><%= sub_event.date.to_s(:long) %></h5>
           <h5><%= sub_event.start_time.to_s(:time) %> </h5>
         </div>
-        <div class="large-4 columns">  
+        <div class="large-4 columns subEventName">  
           <h4><%= link_to sub_event.title, main_event_sub_event_path(@main_event, sub_event) %></h4>
         </div>
         <div class="large-6 columns">
@@ -37,7 +37,7 @@
           <% if @main_event.rsvp_sent %>
 
             <!-- build chart for each sub_event -->
-            <div id="response_chart_<%=index%>" style="width:400px; height:40px;"></div>
+            <div id="response_chart_<%=index%>" style="width:400px; height:40px; padding-top:10px;"></div>
 
             <script type="text/javascript" charset="utf-8">
               $(function(){
