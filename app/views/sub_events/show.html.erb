@@ -1,53 +1,53 @@
-
 <div class="row top"></div>
 
 <div class="row panel">
   <div class="large-6 columns">
-    <h1><%= @sub_event.title %></h1>
-    <h4><%= @sub_event.description %></h4>
+    <h1><%= @sub_event.title %></h1><br/>
+    <h4><%= @sub_event.description %></h4><br/>
     <h4><%= @sub_event.date.to_s(:long) %></h4>
-    <h4>From <%= @sub_event.start_time.to_s(:time) %> to <%= @sub_event.end_time.to_s(:time) %></h4>
+    <h4><%= @sub_event.start_time.to_s(:time) %> to <%= @sub_event.end_time.to_s(:time) %></h4>
     
-    <div class="row">
-      <div class="large-6 columns">
+    <div class="row details">
+      <div class="large-5 columns">
         <%= button_to "Edit Event", edit_main_event_sub_event_path(@main_event, @sub_event), class: "panel_button button", method: "get"%>
       </div>
-      <div class="large-6 columns">
+      <div class="large-5 columns">
         <%= button_to "Delete Event", main_event_sub_event_path(@main_event, @sub_event), class: "panel_button button", method: "delete", data: {confirm: "Are you sure you want to delete?"} %>
       </div>
+      <div class="large-2 columns"></div>
       </div>
   </div>
   <div class="large-6 columns">
-     <!-- if rsvps were sent, render response stats  -->
-        <% if @main_event.rsvp_sent %>
+    <!-- if rsvps were sent, render response stats  -->
+    <% if @main_event.rsvp_sent %>
 
-          <!-- build chart for each sub_event -->
-          <div id="response_chart" style="width:500px; height:400px;"></div>
+      <!-- build chart for each sub_event -->
+      <div id="response_chart" style="width:500px; height:400px;"></div>
 
-          <script type="text/javascript" charset="utf-8">
-            $(function(){
-              $('#response_chart').highcharts({
-                chart: {
-                  backgroundColor: null
-                },
-                title:{
-                  text: null
-                },
-                credits:{
-                  enabled:false
-                },
-                series: [{
-                  type: 'pie',
-                  data: [ 
-                      {name:'No Response', y: <%=@no_response.count%>, color: '#8D8DAD'},
-                      {name:'Attending', y: <%=@attending.count%>, color: '#13B265'},
-                      {name:'Declined', y: <%=@declined.count%>, color: '#B22613'}
-                      ]
-                 }]
-                });
-              });
-            </script>
-        <%end%>
+      <script type="text/javascript" charset="utf-8">
+        $(function(){
+          $('#response_chart').highcharts({
+            chart: {
+              backgroundColor: null
+            },
+            title:{
+              text: null
+            },
+            credits:{
+              enabled:false
+            },
+            series: [{
+              type: 'pie',
+              data: [ 
+                  {name:'No Response', y: <%=@no_response.count%>, color: '#8D8DAD'},
+                  {name:'Attending', y: <%=@attending.count%>, color: '#13B265'},
+                  {name:'Declined', y: <%=@declined.count%>, color: '#B22613'}
+                  ]
+             }]
+            });
+          });
+        </script>
+    <%end%>
   </div>
 </div>
 
@@ -59,15 +59,16 @@
   <!-- Register Guests Button/Modal -->
   <div class="large-3 columns">  
     <a href="#" class= "button" data-reveal-id="myModal">Register Guests</a>
-      <div id="myModal" class="reveal-modal" data-reveal>
+      <div id="myModal" class="reveal-modal tiny" data-reveal>
         <%= form_for [@main_event, @sub_event, @assignment] do |f| %>
           <%= fields_for(@assignment) do |assign| %>
             <%= collection_select(:assignment, :guest_id, @guests, :id, :full_name,  {}, {multiple: true, style:'height:100px'}) %>
           <% end %>
           <%= f.hidden_field :registration_type, value: "from_sub_event_show" %>
-          <%= f.submit "Register Guests", class: "button" %>
+
+          <%= f.submit "Register Guests", class: "button topSpace" %>
         <% end %>
-        <a class="close-reveal-modal">&#215;</a>
+        <a class="close-reveal-modal"></a>
       </div>
   </div>
 </div>
