@@ -8,7 +8,7 @@
   <div class="large-5 columns">
   <a href="#" class="add_button button" data-reveal-id="subEventModal">Add Guest to Another Event</a>
     
-    <div id="subEventModal" class="reveal-modal medium" data-reveal>
+    <div id="subEventModal" class="reveal-modal small" data-reveal>
       <% @unassigned_events.each do |subEvent| %>
         <div class="row">
           <div class="large-3 columns">
@@ -46,10 +46,10 @@
   <div class="large-10 columns listEvents">
     <% @assigned_events.each_with_index do |subEvent, index| %>
       <a href="#" data-reveal-id="subEventModal_2<%=index%>"><h5><%=subEvent.title %></h5></a>
-      <div id="subEventModal_2<%=index%>" class="reveal-modal medium" data-reveal>
+      <div id="subEventModal_2<%=index%>" class="reveal-modal tiny" data-reveal>
         <div class="row">
           <div class="large-10 large-centered columns removeGuestModal">
-            <%= button_to "Remove from #{subEvent.title}", main_event_sub_event_assignment_path(@main_event, subEvent, @guest), class: "center_button button", :method => "delete" %>
+            <%= button_to "Remove from This Event?", main_event_sub_event_assignment_path(@main_event, subEvent, @guest), class: "center_button button", :method => "delete" %>
           </div>
         </div>
       </div>
