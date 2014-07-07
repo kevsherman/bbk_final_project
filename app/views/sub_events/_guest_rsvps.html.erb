@@ -9,7 +9,8 @@
     <tbody>
       <tr>
         <td>
-          <a href="#" data-reveal-id="attendingGuestModal<%=index%>"><h5><strong><%= guest.last %>, <%= guest.first %></strong></h5></a>
+          <a href="#" data-reveal-id="attendingGuestModal<%=index%>"><h5><strong>
+          <h2><%= guest.last %>, <%= guest.first %></h2></strong></h5></a>
         </td>
       </tr>
           <div id="attendingGuestModal<%=index%>" class="reveal-modal large" data-reveal>
@@ -49,7 +50,7 @@
     <div id="declinedGuestModal<%=index%>" class="reveal-modal large" data-reveal>
      <div class="row">
       <div class="large-4 columns guestName">
-        <%= guest.last %>, <%= guest.first %> 
+        <h2><%= guest.last %>, <%= guest.first %> </h2>
       </div>
       <div class="large-4 columns">
        <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event, guest), class: "button",  :method => "delete" %>
@@ -82,7 +83,7 @@
     <div id="unconfirmedGuestModal<%=index%>" class="reveal-modal large" data-reveal>
      <div class="row">
       <div class="large-4 columns guestName">
-        <%= guest.last %>, <%= guest.first %> 
+        <h2><%= guest.last %>, <%= guest.first %> </h2>
       </div>
       <div class="large-4 columns">
        <%= button_to "Remove from GuestList", main_event_sub_event_assignment_path(@main_event, @sub_event,guest), class: "button",  :method => "delete" %>
