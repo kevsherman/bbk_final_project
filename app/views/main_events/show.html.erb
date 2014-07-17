@@ -21,6 +21,8 @@
     <%= button_to "RSVP's", main_event_rsvps_path(@main_event), class: "button sidebar", :method => "get" %>
   </div>  
   <div class="large-10 columns">
+  <!-- Send count of events to js -->
+    <div id="count" style="display:none;" data-count="<%=@sub_events.count%>"></div>
   <!-- List each subevent -->
     <% @sub_events.each_with_index do |sub_event, index| %>
       <div class="row">
@@ -37,74 +39,17 @@
           <% if @main_event.rsvp_sent %>
 
             <!-- build chart for each sub_event -->
-            <div id="response_chart_<%=index%>" style="width:400px; height:40px; padding-top:10px;"></div>
+            <!-- <div id="response_chart_<%#=index%>" style="width:400px; height:40px; padding-top:10px;"></div> -->
 
-            <script type="text/javascript" charset="utf-8">
-              $(function(){
-                $('#response_chart_'+<%=index%>).highcharts({
-                  chart:{
-                    type: 'bar',
-                    spacing: [0,0,0,0],
-                    margin: [0,0,0,0],
-                    height: 47
-                  },
-                  credits:{
-                    enabled: false
-                  },
-                  title:{
-                    text: null
-                  },
-                  yAxis:{ 
-                    gridLineWidth: 0,
-                    minorGridLineWidth: 0,
-                    labels:{
-                      enabled:false
-                    },
-                     title:{
-                      text: null,
-                      enabled:false
-                    }
-                  },
-                  xAxis:{
-                    categories:['RSVPs'],
-                    labels:{
-                      enabled:false
-                    },
-                    minorTickLength: 0,
-                    tickLength: 0,
-                    lineWidth: 0,
-                    minorGridLineWidth: 0,
-                    lineColor: 'transparent',
-                    title:{
-                      enabled:false,
-                      text: null
-                    }
-                  },
-                  plotOptions:{
-                    series: {
-                      stacking: 'percent',
-                      groupPadding: -1
-                    }
-                  },
-                  legend:{
-                    enabled:false
-                  },
-                  series:[{
-                    name: 'No Response',
-                    data: [<%=@nil_counts[sub_event.id]%>],
-                    color: '#8D8DAD'
-                  },{
-                    name: 'Declined',
-                    data: [<%=@false_counts[sub_event.id]%>],
-                    color: '#B22613'
-                  },{
-                    name: 'Attending',
-                    data: [<%=@true_counts[sub_event.id]%>],
-                    color: '#13B265'
-                  }]
-                  });
-                });
-              </script>
+            <%= content_tag :div, nil, class:"homeChart", id:"response_chart_"+index.to_s,
+              data: {
+                nil_count:@nil_counts[sub_event.id],
+                true_count:@true_counts[sub_event.id],
+                false_count:@false_counts[sub_event.id]
+                } do %>
+
+            <%end%>
+          
           <%end%>
         </div>
         <hr/>
