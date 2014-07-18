@@ -4,6 +4,7 @@
 
 $(function(){
   $numSubEvents = $('#count').data().count;
+  
   for(var i = 0; i < $numSubEvents; i++){
     $('#response_chart_'+i).highcharts({
       chart:{

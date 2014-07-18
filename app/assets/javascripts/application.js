@@ -10,9 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// Turbolinks has been removed to allow js to load automatically
+//
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require fastclick
 //= require placeholder
 //= require foundation/foundation
