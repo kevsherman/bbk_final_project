@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root to: 'home#index'
 
   get '/thankyou', to: 'itinerary#thankyou'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
     resources :guests
   end
   resources :itinerary, only: [:show]
-  resources :sessions, only: [:new, :create, :destroy]
+  #resources :sessions, only: [:new, :create, :destroy]
   resource :user, only: [:edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
