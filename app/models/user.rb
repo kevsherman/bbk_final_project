@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  has_one :main_events
+  has_one :main_event
   #has_secure_password
   validates :email, presence: true, uniqueness: true
   validates_presence_of :password, :password_confirmation

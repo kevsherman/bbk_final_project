@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
       # UserMailer.welcome_email(@user).deliver
       redirect_to new_main_event_path
     else
