@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :formatted_date, :logged_in?, :restrict_access?, :rsvps_sent?, :thankyou
 
   def logged_in?
-    if current_user
+    if current_user && main_event
       redirect_to main_event_path(main_event)
+    elsif current_user
+      redirect_to new_main_event_path
     end
   end
   

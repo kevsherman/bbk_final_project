@@ -12,11 +12,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'dotenv-rails'
 end
 
 gem 'faker'
-
 gem 'devise'
+gem 'omniauth-facebook'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
