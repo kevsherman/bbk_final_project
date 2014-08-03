@@ -25,6 +25,9 @@
               <%= label_tag :password %><br/>
               <%= password_field_tag :password %>
             </div>
+            <div>
+            <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook) %>
+            </div>
             <div><%= submit_tag "Log In", class: "button" %></div>
           <% end %>
           <a class="close-reveal-modal">&#215;</a>
