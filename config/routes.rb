@@ -14,8 +14,10 @@ Rails.application.routes.draw do
     resources :guests
   end
   resources :itinerary, only: [:show]
-  #resources :sessions, only: [:new, :create, :destroy]
   resource :user, only: [:edit, :update]
+
+  match "/contacts/:importer/callback" => "contacts#index", :via => [:get, :post], :as => "contacts_callback"
+  get "/contacts/failure" => "contacts#failure"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

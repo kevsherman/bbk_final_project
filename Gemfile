@@ -7,7 +7,7 @@ gem 'rails', '4.1.1'
 # and pry, rspec, capybara for testing
 group :development, :test do
   gem 'sqlite3'
-  gem 'pry'
+  gem 'pry-byebug'
   gem 'pry-nav'
   gem 'rspec-rails'
   gem 'capybara'
@@ -15,9 +15,10 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-gem 'faker'
 gem 'devise'
+gem 'faker'
 gem 'omniauth-facebook'
+gem "omnicontacts", :git => 'https://github.com/gabrieltaylor/omnicontacts'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

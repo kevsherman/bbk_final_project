@@ -3,7 +3,10 @@
     <h1>Create an Account</h1>
       
     <%= render 'form' %>
-    <%= link_to "Signup with Facebook", user_omniauth_authorize_path(:facebook) %>
+
+    <div>
+      <i class="fa fa-facebook"> </i><%= button_to "Signup with Facebook", user_omniauth_authorize_path(:facebook), class: "button" %>
+    </div>
   </div>
 </div>
 
