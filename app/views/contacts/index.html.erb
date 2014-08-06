@@ -1,6 +1,59 @@
-<div>
-  <% @contacts.each_with_index do |contact, index| %>
-    <%= contact.inspect %>
+<%= form_for @main_event do |f| %>
+  Guests:
+  <ul>
+    <%= f.fields_for :guests do |guests_form| %>
+      <li>
+        <%= guests_form.label :email %>
+        <%= guests_form.text_field :email %>
+ 
+        <%= guests_form.label :first %>
+        <%= guests_form.text_field :first %>
+
+        <%= guests_form.label :last %>
+        <%= guests_form.text_field :last %>
+
+      <% @contacts.each_with_index do |contact, index| %>
+      <li class="field-to-add">
+        
+      <label for="main_event_guests_attributes_<%=index*1000%>_email">Email</label><input id="main_event_guests_attributes_<%=index*1000%>_email" name="main_event[guests_attributes][<%=index*1000%>][email]" type="text" value="<%=contact[:email]%>">
+
+      <label for="main_event_guests_attributes_<%=index*1000%>_first">First</label>
+      <input id="main_event_guests_attributes_<%=index*1000%>_first" name="main_event[guests_attributes][<%=index*1000%>][first]" type="text" value="<%= contact[:first_name] %>">
+
+      <label for="main_event_guests_attributes_<%=index*1000%>_last">Last</label>
+      <input id="main_event_guests_attributes_<%=index*1000%>_last" name="main_event[guests_attributes][<%=index*1000%>][last]" type="text" value="<%= contact[:last_name] %>">
+
+    </li>
+  <p>
+    First name: <%= contact[:first_name] %>
+    Last name: <%= contact[:last_name] %>
+  </p>
   <% end %>
+
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div>
+<form class="dummy-form">
+  <% @contacts.each_with_index do |contact, index| %>
+    <li class="field-to-add">
+        
+      <label for="main_event_guests_attributes_<%=index*1000%>_email">Email</label><input id="main_event_guests_attributes_<%=index*1000%>_email" name="main_event[guests_attributes][<%=index*1000%>][email]" type="text" value="<%=contact[:email]%>">
+
+      <label for="main_event_guests_attributes_<%=index*1000%>_first">First</label>
+      <input id="main_event_guests_attributes_<%=index*1000%>_first" name="main_event[guests_attributes][<%=index*1000%>][first]" type="text" value="<%= contact[:first_name] %>">
+
+      <label for="main_event_guests_attributes_<%=index*1000%>_last">Last</label>
+      <input id="main_event_guests_attributes_<%=index*1000%>_last" name="main_event[guests_attributes][<%=index*1000%>][last]" type="text" value="<%= contact[:last_name] %>">
+
+    </li>
+  <p>
+    First name: <%= contact[:first_name] %>
+    Last name: <%= contact[:last_name] %>
+  </p>
+  <% end %>
+  </form>
     <%= @contacts.inspect %>
 </div>
