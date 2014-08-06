@@ -31,6 +31,16 @@ kevin = User.create(
   )
 puts "created Kevin" if kevin.valid?
 
+gabe = User.create(
+  firstname: "Gabe",
+  lastname: "Russ",
+  email: "gabriel.taylor.russ@gmail.com",
+  password: @password,
+  password_confirmation: @password,
+  phone: "604-880-2258"
+  )
+puts "created Gabe" if gabe.valid?
+
 #create main events
 
 User.all.each do |user|

@@ -63,7 +63,7 @@ class MainEventsController < ApplicationController
 
   def main_event_params
     params.require(:main_event).permit(
-      :title, :image, :link, :description, :start_time, :end_time, :bride_full_name, :groom_full_name, :date
+      :title, :image, :link, :description, :start_time, :end_time, :bride_full_name, :groom_full_name, :date, guests_attributes: [:id, :email, :first, :last]
       )
   end
 end

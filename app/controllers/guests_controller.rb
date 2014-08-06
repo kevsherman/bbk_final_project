@@ -7,11 +7,9 @@ class GuestsController < ApplicationController
   end
 
   def create
-    @guest = Guest.new(guest_params)
-    @guest.main_event_id = params[:main_event_id]
+    @guest = main_event.guests.build(guest_params)
     
     if @guest.save
-      @main_event = main_event
       redirect_to main_event_guests_path
     else
       render :new
