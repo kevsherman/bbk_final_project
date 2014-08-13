@@ -2,7 +2,7 @@ class GuestsController < ApplicationController
   before_filter :restrict_access?
     
   def index
-    @main_event = MainEvent.where(user_id: session[:user_id]).first
+    @main_event = main_event
     @guests = @main_event.guests.sort_by &:last
   end
 
@@ -11,7 +11,7 @@ class GuestsController < ApplicationController
     @guest.main_event_id = params[:main_event_id]
     
     if @guest.save
-      @main_event = MainEvent.where(user_id: session[:user_id]).first
+      @main_event = main_event
       redirect_to main_event_guests_path
     else
       render :new
@@ -19,13 +19,13 @@ class GuestsController < ApplicationController
   end
 
   def new
-    @main_event = MainEvent.where(user_id: session[:user_id]).first
+    @main_event = main_event
     @guest = Guest.new
     
   end
 
   def show
-    @main_event = MainEvent.where(user_id: session[:user_id]).first
+    @main_event = main_event
     @guest = Guest.find(params[:id])
     @assignment = Assignment.new
     @assigned_events = @guest.sub_events
@@ -33,12 +33,12 @@ class GuestsController < ApplicationController
   end
 
   def edit
-    @main_event = MainEvent.where(user_id: session[:user_id]).first
+    @main_event = main_event
     @guest = Guest.find(params[:id])
   end
 
   def update
-    @main_event = MainEvent.where(user_id: session[:user_id]).first
+    @main_event = main_event
     @guest = Guest.find(params[:id])
     if @guest.update_attributes(guest_params)
       redirect_to main_event_guest_path
