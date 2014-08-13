@@ -1,8 +1,9 @@
+<input class="contact-search-input" type="search" placeholder="Search contacts" />
 <%= form_for @main_event do |f| %>
   Guests:
   <ul>
     <%= f.fields_for :guests do |guests_form| %>
-      <li>
+      <li class="searchable-contact">
         <%= guests_form.label :email %>
         <%= guests_form.text_field :email %>
  
@@ -21,7 +22,7 @@
 <form class="dummy-form">
   <% @contacts.each_with_index do |contact, index| %>
     <% unique_id = (Time.now.to_f * 1000).to_i %>
-    <li class="field-to-add">
+    <li class="field-to-add searchable-contact">
         
       <label for="main_event_guests_attributes_<%=unique_id%>_email">Email</label><input id="main_event_guests_attributes_<%=unique_id%>_email" name="main_event[guests_attributes][<%=unique_id%>][email]" type="text" value="<%=contact[:email]%>">
 
@@ -31,10 +32,10 @@
       <label for="main_event_guests_attributes_<%=unique_id%>_last">Last</label>
       <input id="main_event_guests_attributes_<%=unique_id%>_last" name="main_event[guests_attributes][<%=unique_id%>][last]" type="text" value="<%= contact[:last_name] %>">
     </li>
-  <p>
+<!--   <p>
     First name: <%= contact[:first_name] %>
     Last name: <%= contact[:last_name] %>
-  </p>
+  </p> -->
   <% end %>
   </form>
 </div>
